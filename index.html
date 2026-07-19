@@ -1096,6 +1096,15 @@
     }
     return "";
   }
+  /* giscus's own dark theme is GitHub navy (#0d1117), which clashes with the
+     near-black page. transparent_dark drops the background so the page's own
+     colour shows through; light matches the white theme as-is. */
+  function giscusTheme(){
+    var cur = root.getAttribute("data-theme") ||
+      (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+    return cur === "light" ? "light" : "transparent_dark";
+  }
+
   var isFile = location.protocol === "file:";
 
   /* ───────────── email ─────────────
@@ -1139,6 +1148,13 @@
     var next = cur === "dark" ? "light" : "dark";
     root.setAttribute("data-theme", next);
     try { localStorage.setItem("theme", next); } catch(e){}
+    /* giscus reads its theme once at load; the iframe has to be told */
+    var gi = document.querySelector("iframe.giscus-frame");
+    if (gi && gi.contentWindow) {
+      gi.contentWindow.postMessage(
+        { giscus: { setConfig: { theme: giscusTheme() } } },
+        "https://giscus.app");
+    }
     /* mermaid bakes its colours into the rendered SVG, so it has to be redrawn */
     var host = document.getElementById("docBody");
     if (host && host.querySelector(".mermaid")) {
@@ -1796,10 +1812,7 @@
     s.setAttribute("data-input-position", "top");
     s.setAttribute("data-lang", "en");
     s.setAttribute("data-loading", "lazy");
-    s.setAttribute("data-theme",
-      (root.getAttribute("data-theme") ||
-       (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark")) === "light"
-        ? "light" : "dark");
+    s.setAttribute("data-theme", giscusTheme());
     host.appendChild(s);
   }
 
