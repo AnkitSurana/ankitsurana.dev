@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Keypoint matches drawn between a reference image and a video frame, with inliers in green and RANSAC outliers in red">
+  <style>
+    /* var() picks up the page theme when this file is inlined; the fallback
+       keeps it readable when the .svg is opened on its own. */
+    .bg{fill:var(--diagram-bg,#0d1117)} .panel{fill:var(--diagram-panel,#161b22)}
+    .panel2{fill:var(--diagram-panel2,#1c2128)}
+    .ln{stroke:var(--diagram-line,#30363d);fill:none}
+    .t{fill:var(--diagram-ink,#e6edf3)} .m{fill:var(--diagram-ink2,#8b949e)}
+    .dim{fill:var(--diagram-ink3,#6e7681)}
+    .acc{fill:var(--diagram-acc,#8ab4f8)} .accs{stroke:var(--diagram-acc,#8ab4f8);fill:none}
+    .bad{fill:var(--diagram-bad,#f85149)} .bads{stroke:var(--diagram-bad,#f85149);fill:none}
+    .ok{fill:var(--diagram-ok,#3fb950)} .oks{stroke:var(--diagram-ok,#3fb950);fill:none}
+    .warn{fill:var(--diagram-warn,#f0883e)}
+    text{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+    .sans{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif}
+    @media (prefers-color-scheme: light){
+      .bg{fill:var(--diagram-bg,#f6f8fa)} .panel{fill:var(--diagram-panel,#ffffff)}
+      .panel2{fill:var(--diagram-panel2,#f0f3f6)}
+      .ln{stroke:var(--diagram-line,#d0d7de)}
+      .t{fill:var(--diagram-ink,#1f2328)} .m{fill:var(--diagram-ink2,#59636e)}
+      .dim{fill:var(--diagram-ink3,#818b98)}
+      .acc{fill:var(--diagram-acc,#0969da)} .accs{stroke:var(--diagram-acc,#0969da)}
+      .bad{fill:var(--diagram-bad,#cf222e)} .bads{stroke:var(--diagram-bad,#cf222e)}
+      .ok{fill:var(--diagram-ok,#1a7f37)} .oks{stroke:var(--diagram-ok,#1a7f37)}
+      .warn{fill:var(--diagram-warn,#bc4c00)}
+    }
+  </style>
+  <rect class="bg" width="1200" height="675"/>
+
+  <text class="sans t" x="60" y="66" font-size="28" font-weight="600">You can see why it matched</text>
+  <text class="m" x="60" y="98" font-size="15">10 of 14 descriptor pairs agree on one transform. RANSAC throws the other 4 away.</text>
+
+  <rect class="panel ln" x="90" y="180" width="250" height="290" rx="12" stroke-width="1"/>
+  <text class="m" x="90" y="166" font-size="13" letter-spacing="2">REFERENCE</text>
+
+  <rect class="panel ln" x="670" y="170" width="330" height="310" rx="12" stroke-width="1"/>
+  <text class="m" x="670" y="156" font-size="13" letter-spacing="2">FRAME 00412</text>
+
+  <path class="oks" d="M202 258 L782 251" stroke-width="1.2" opacity="0.75" /><path class="oks" d="M221 386 L802 383" stroke-width="1.2" opacity="0.75" /><path class="oks" d="M132 238 L708 232" stroke-width="1.2" opacity="0.75" /><path class="oks" d="M257 244 L841 235" stroke-width="1.2" opacity="0.75" /><path class="oks" d="M213 369 L799 364" stroke-width="1.2" opacity="0.75" /><path class="oks" d="M134 349 L718 342" stroke-width="1.2" opacity="0.75" /><path class="oks" d="M174 229 L756 223" stroke-width="1.2" opacity="0.75" /><path class="oks" d="M142 331 L721 323" stroke-width="1.2" opacity="0.75" /><path class="oks" d="M227 237 L811 228" stroke-width="1.2" opacity="0.75" /><path class="oks" d="M181 243 L761 238" stroke-width="1.2" opacity="0.75" /><path class="bads" d="M261 328 L845 319" stroke-width="1" opacity="0.5" stroke-dasharray='4 4'/><path class="bads" d="M135 364 L714 364" stroke-width="1" opacity="0.5" stroke-dasharray='4 4'/><path class="bads" d="M151 277 L736 271" stroke-width="1" opacity="0.5" stroke-dasharray='4 4'/><path class="bads" d="M281 380 L870 381" stroke-width="1" opacity="0.5" stroke-dasharray='4 4'/>
+  <circle class="ok" cx="202" cy="258" r="4"/><circle class="ok" cx="221" cy="386" r="4"/><circle class="ok" cx="132" cy="238" r="4"/><circle class="ok" cx="257" cy="244" r="4"/><circle class="ok" cx="213" cy="369" r="4"/><circle class="ok" cx="134" cy="349" r="4"/><circle class="ok" cx="174" cy="229" r="4"/><circle class="ok" cx="142" cy="331" r="4"/><circle class="ok" cx="227" cy="237" r="4"/><circle class="ok" cx="181" cy="243" r="4"/><circle class="bad" cx="261" cy="328" r="4"/><circle class="bad" cx="135" cy="364" r="4"/><circle class="bad" cx="151" cy="277" r="4"/><circle class="bad" cx="281" cy="380" r="4"/>
+  <circle class="ok" cx="782" cy="251" r="4"/><circle class="ok" cx="802" cy="383" r="4"/><circle class="ok" cx="708" cy="232" r="4"/><circle class="ok" cx="841" cy="235" r="4"/><circle class="ok" cx="799" cy="364" r="4"/><circle class="ok" cx="718" cy="342" r="4"/><circle class="ok" cx="756" cy="223" r="4"/><circle class="ok" cx="721" cy="323" r="4"/><circle class="ok" cx="811" cy="228" r="4"/><circle class="ok" cx="761" cy="238" r="4"/><circle class="bad" cx="845" cy="319" r="4"/><circle class="bad" cx="714" cy="364" r="4"/><circle class="bad" cx="736" cy="271" r="4"/><circle class="bad" cx="870" cy="381" r="4"/>
+
+  <rect class="panel2 oks" x="90" y="512" width="290" height="100" rx="12" stroke-width="1.5"/>
+  <text class="ok" x="114" y="546" font-size="17">10 inliers</text>
+  <text class="t" x="114" y="572" font-size="14">consistent homography</text>
+  <text class="m" x="114" y="594" font-size="13">match accepted</text>
+
+  <rect class="panel2 bads" x="410" y="512" width="290" height="100" rx="12" stroke-width="1.5"/>
+  <text class="bad" x="434" y="546" font-size="17">4 outliers</text>
+  <text class="t" x="434" y="572" font-size="14">coincidental descriptors</text>
+  <text class="m" x="434" y="594" font-size="13">discarded by RANSAC</text>
+
+  <rect class="panel2 ln" x="730" y="512" width="380" height="100" rx="12" stroke-width="1"/>
+  <text class="acc" x="754" y="546" font-size="17">A neural net would say 0.94</text>
+  <text class="t" x="754" y="572" font-size="14">and nothing else. When this fails I can</text>
+  <text class="t" x="754" y="594" font-size="14">look at the picture and see the reason.</text>
+
+</svg>

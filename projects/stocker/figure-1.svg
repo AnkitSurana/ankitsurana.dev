@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="A peer comparison question answered inside Claude, showing the tool call and the structured table returned">
+  <style>
+    /* var() picks up the page theme when this file is inlined; the fallback
+       keeps it readable when the .svg is opened on its own. */
+    .bg{fill:var(--diagram-bg,#0d1117)} .panel{fill:var(--diagram-panel,#161b22)}
+    .panel2{fill:var(--diagram-panel2,#1c2128)}
+    .ln{stroke:var(--diagram-line,#30363d);fill:none}
+    .t{fill:var(--diagram-ink,#e6edf3)} .m{fill:var(--diagram-ink2,#8b949e)}
+    .dim{fill:var(--diagram-ink3,#6e7681)}
+    .acc{fill:var(--diagram-acc,#8ab4f8)} .accs{stroke:var(--diagram-acc,#8ab4f8);fill:none}
+    .bad{fill:var(--diagram-bad,#f85149)} .bads{stroke:var(--diagram-bad,#f85149);fill:none}
+    .ok{fill:var(--diagram-ok,#3fb950)} .oks{stroke:var(--diagram-ok,#3fb950);fill:none}
+    .warn{fill:var(--diagram-warn,#f0883e)}
+    text{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+    .sans{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif}
+    @media (prefers-color-scheme: light){
+      .bg{fill:var(--diagram-bg,#f6f8fa)} .panel{fill:var(--diagram-panel,#ffffff)}
+      .panel2{fill:var(--diagram-panel2,#f0f3f6)}
+      .ln{stroke:var(--diagram-line,#d0d7de)}
+      .t{fill:var(--diagram-ink,#1f2328)} .m{fill:var(--diagram-ink2,#59636e)}
+      .dim{fill:var(--diagram-ink3,#818b98)}
+      .acc{fill:var(--diagram-acc,#0969da)} .accs{stroke:var(--diagram-acc,#0969da)}
+      .bad{fill:var(--diagram-bad,#cf222e)} .bads{stroke:var(--diagram-bad,#cf222e)}
+      .ok{fill:var(--diagram-ok,#1a7f37)} .oks{stroke:var(--diagram-ok,#1a7f37)}
+      .warn{fill:var(--diagram-warn,#bc4c00)}
+    }
+  </style>
+  <rect class="bg" width="1200" height="675"/>
+
+  <text class="sans t" x="60" y="66" font-size="28" font-weight="600">Research, answered where you are already asking</text>
+  <text class="m" x="60" y="98" font-size="15">The model handles the language. The server only knows how to fetch things.</text>
+
+  <rect class="panel ln" x="60" y="136" width="1080" height="480" rx="16" stroke-width="1"/>
+
+  <rect class="panel2 ln" x="92" y="170" width="700" height="52" rx="26" stroke-width="1"/>
+  <text class="t" x="120" y="202" font-size="16">How does TCS compare with its peers on margins?</text>
+  <text class="dim" x="1080" y="202" font-size="13" text-anchor="end">you</text>
+
+  <rect class="panel2 accs" x="92" y="248" width="200" height="34" rx="8" stroke-width="1.5"/>
+  <circle class="acc" cx="112" cy="265" r="5"/>
+  <text class="acc" x="128" y="270" font-size="13">get_peer_comparison</text>
+  <text class="dim" x="306" y="270" font-size="12">tool call · 240ms</text>
+
+  <text class="m" x="92" y="322" font-size="13" letter-spacing="1.5">RETURNED, STRUCTURED</text>
+  <rect class="panel2 ln" x="92" y="338" width="1016" height="182" rx="10" stroke-width="1"/>
+  <path class="ln" d="M92 378 H 1108" stroke-width="1"/>
+  <g class="m" font-size="13">
+    <text x="120" y="366">SYMBOL</text><text x="360" y="366">OP MARGIN</text>
+    <text x="580" y="366">P/E</text><text x="760" y="366">REV GROWTH</text><text x="980" y="366">MCAP</text>
+  </g>
+  <g class="t" font-size="15">
+    <text x="120" y="410">TCS</text><text x="360" y="410">24.6%</text><text x="580" y="410">27.1</text>
+    <text x="760" y="410">4.2%</text><text x="980" y="410">14.2L Cr</text>
+    <text x="120" y="446">INFY</text><text x="360" y="446">21.0%</text><text x="580" y="446">24.8</text>
+    <text x="760" y="446">3.1%</text><text x="980" y="446">7.8L Cr</text>
+    <text x="120" y="482">WIPRO</text><text x="360" y="482">16.4%</text><text x="580" y="482">20.3</text>
+    <text x="760" y="482">1.8%</text><text x="980" y="482">2.9L Cr</text>
+  </g>
+  <path class="oks" d="M104 396 v20" stroke-width="3"/>
+
+  <rect class="panel2 ln" x="92" y="544" width="1016" height="50" rx="10" stroke-width="1"/>
+  <text class="warn" x="118" y="574" font-size="14">No should_i_buy tool, and there will not be one.</text>
+  <text class="m" x="590" y="574" font-size="14">Free data is delayed. This is a research aid, not a terminal.</text>
+
+</svg>

@@ -1,0 +1,58 @@
+[
+  {
+    "slug": "grounding-filter-was-too-strict",
+    "title": "My anti-hallucination filter was deleting the real gaps",
+    "summary": "It only kept what it could find in the job description. That was right, and it was also throwing away the answers worth reading.",
+    "date": "2026-07-19",
+    "tags": [
+      "LLM",
+      "Applyin"
+    ],
+    "cover": "cover.svg",
+    "display": "show",
+    "header": "header.svg",
+    "art": "1784449162"
+  },
+  {
+    "slug": "check-then-act-race",
+    "title": "The check-then-act race that was charging users twice",
+    "summary": "It passed every test I wrote, because every test I wrote ran one request at a time.",
+    "date": "2026-07-18",
+    "tags": [
+      "Concurrency",
+      "Postgres"
+    ],
+    "cover": "cover.svg",
+    "display": "hide",
+    "header": "header.svg",
+    "art": "1784428981"
+  },
+  {
+    "slug": "cache-key-was-wrong",
+    "title": "My cache key was wrong, so I billed people for work I had already done",
+    "summary": "Same job, same resume, second charge. The key was hashing the rendering along with the inputs.",
+    "date": "2026-07-04",
+    "tags": [
+      "Caching",
+      "Billing"
+    ],
+    "cover": "cover.svg",
+    "display": "hide",
+    "header": "header.svg",
+    "art": "1784428981"
+  },
+  {
+    "slug": "what-do-you-rate-limit-on",
+    "title": "What do you rate-limit on? The bug hiding inside \"per user\"",
+    "summary": "It said per user. It was keyed on the token, and the client could mint a fresh token whenever it liked.",
+    "date": "2026-06-20",
+    "tags": [
+      "Rate limiting",
+      "Abuse"
+    ],
+    "cover": "cover.svg",
+    "display": "hide",
+    "header": "header.svg",
+    "art": "1784428981"
+  }
+]

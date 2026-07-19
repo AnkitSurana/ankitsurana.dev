@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="A role and permission grid for viewer, editor, admin and owner, with the override trap and the rule that closes it">
+  <style>
+    /* var() picks up the page theme when this file is inlined; the fallback
+       keeps it readable when the .svg is opened on its own. */
+    .bg{fill:var(--diagram-bg,#0d1117)} .panel{fill:var(--diagram-panel,#161b22)}
+    .panel2{fill:var(--diagram-panel2,#1c2128)}
+    .ln{stroke:var(--diagram-line,#30363d);fill:none}
+    .t{fill:var(--diagram-ink,#e6edf3)} .m{fill:var(--diagram-ink2,#8b949e)}
+    .dim{fill:var(--diagram-ink3,#6e7681)}
+    .acc{fill:var(--diagram-acc,#8ab4f8)} .accs{stroke:var(--diagram-acc,#8ab4f8);fill:none}
+    .bad{fill:var(--diagram-bad,#f85149)} .bads{stroke:var(--diagram-bad,#f85149);fill:none}
+    .ok{fill:var(--diagram-ok,#3fb950)} .oks{stroke:var(--diagram-ok,#3fb950);fill:none}
+    .warn{fill:var(--diagram-warn,#f0883e)}
+    text{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+    .sans{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif}
+    @media (prefers-color-scheme: light){
+      .bg{fill:var(--diagram-bg,#f6f8fa)} .panel{fill:var(--diagram-panel,#ffffff)}
+      .panel2{fill:var(--diagram-panel2,#f0f3f6)}
+      .ln{stroke:var(--diagram-line,#d0d7de)}
+      .t{fill:var(--diagram-ink,#1f2328)} .m{fill:var(--diagram-ink2,#59636e)}
+      .dim{fill:var(--diagram-ink3,#818b98)}
+      .acc{fill:var(--diagram-acc,#0969da)} .accs{stroke:var(--diagram-acc,#0969da)}
+      .bad{fill:var(--diagram-bad,#cf222e)} .bads{stroke:var(--diagram-bad,#cf222e)}
+      .ok{fill:var(--diagram-ok,#1a7f37)} .oks{stroke:var(--diagram-ok,#1a7f37)}
+      .warn{fill:var(--diagram-warn,#bc4c00)}
+    }
+  </style>
+  <rect class="bg" width="1200" height="675"/>
+
+  <text class="sans t" x="60" y="66" font-size="28" font-weight="600">One function decides this, not every view</text>
+  <text class="m" x="60" y="98" font-size="15">So when someone asks why a user could see a document, there is exactly one place to read.</text>
+
+  <rect class="panel ln" x="60" y="150" width="1080" height="330" rx="16" stroke-width="1"/>
+  <text class="m" x="435" y="212" font-size="13" text-anchor="middle">READ</text><text class="m" x="625" y="212" font-size="13" text-anchor="middle">WRITE</text><text class="m" x="815" y="212" font-size="13" text-anchor="middle">INVITE</text><text class="m" x="1005" y="212" font-size="13" text-anchor="middle">DELETE WORKSPACE</text><text class="t" x="120" y="268" font-size="17">Viewer</text><rect class="panel2 oks" x="356" y="240" width="158" height="42" rx="9" stroke-width="1.5"/><path class="oks" d="M426 261 l6 7 l12 -14" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><rect class="panel ln" x="546" y="240" width="158" height="42" rx="9" stroke-width="1"/><path class="ln" d="M618 261 h14" stroke-width="2" stroke-linecap="round"/><rect class="panel ln" x="736" y="240" width="158" height="42" rx="9" stroke-width="1"/><path class="ln" d="M808 261 h14" stroke-width="2" stroke-linecap="round"/><rect class="panel ln" x="926" y="240" width="158" height="42" rx="9" stroke-width="1"/><path class="ln" d="M998 261 h14" stroke-width="2" stroke-linecap="round"/><text class="t" x="120" y="330" font-size="17">Editor</text><rect class="panel2 oks" x="356" y="302" width="158" height="42" rx="9" stroke-width="1.5"/><path class="oks" d="M426 323 l6 7 l12 -14" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><rect class="panel2 oks" x="546" y="302" width="158" height="42" rx="9" stroke-width="1.5"/><path class="oks" d="M616 323 l6 7 l12 -14" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><rect class="panel ln" x="736" y="302" width="158" height="42" rx="9" stroke-width="1"/><path class="ln" d="M808 323 h14" stroke-width="2" stroke-linecap="round"/><rect class="panel ln" x="926" y="302" width="158" height="42" rx="9" stroke-width="1"/><path class="ln" d="M998 323 h14" stroke-width="2" stroke-linecap="round"/><text class="t" x="120" y="392" font-size="17">Admin</text><rect class="panel2 oks" x="356" y="364" width="158" height="42" rx="9" stroke-width="1.5"/><path class="oks" d="M426 385 l6 7 l12 -14" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><rect class="panel2 oks" x="546" y="364" width="158" height="42" rx="9" stroke-width="1.5"/><path class="oks" d="M616 385 l6 7 l12 -14" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><rect class="panel2 oks" x="736" y="364" width="158" height="42" rx="9" stroke-width="1.5"/><path class="oks" d="M806 385 l6 7 l12 -14" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><rect class="panel ln" x="926" y="364" width="158" height="42" rx="9" stroke-width="1"/><path class="ln" d="M998 385 h14" stroke-width="2" stroke-linecap="round"/><text class="t" x="120" y="454" font-size="17">Owner</text><rect class="panel2 oks" x="356" y="426" width="158" height="42" rx="9" stroke-width="1.5"/><path class="oks" d="M426 447 l6 7 l12 -14" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><rect class="panel2 oks" x="546" y="426" width="158" height="42" rx="9" stroke-width="1.5"/><path class="oks" d="M616 447 l6 7 l12 -14" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><rect class="panel2 oks" x="736" y="426" width="158" height="42" rx="9" stroke-width="1.5"/><path class="oks" d="M806 447 l6 7 l12 -14" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><rect class="panel2 oks" x="926" y="426" width="158" height="42" rx="9" stroke-width="1.5"/><path class="oks" d="M996 447 l6 7 l12 -14" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <rect class="panel2 bads" x="60" y="512" width="530" height="112" rx="12" stroke-width="1.5"/>
+  <text class="bad" x="86" y="546" font-size="16">The trap</text>
+  <text class="t" x="86" y="574" font-size="14">A document override that outlives workspace</text>
+  <text class="t" x="86" y="598" font-size="14">membership. That is how ex-employees keep reading.</text>
+
+  <rect class="panel2 oks" x="610" y="512" width="530" height="112" rx="12" stroke-width="1.5"/>
+  <text class="ok" x="636" y="546" font-size="16">The rule</text>
+  <text class="t" x="636" y="574" font-size="14">Membership gates everything. An override can only</text>
+  <text class="t" x="636" y="598" font-size="14">move you within it, never grant access from outside.</text>
+
+</svg>

@@ -1,0 +1,2026 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ankit Surana — Data &amp; AI Engineer</title>
+<meta name="description" content="Data engineer at NatWest. Ten years of event-driven pipelines on AWS, plus AI products I build and ship on my own time. Notes on the things that broke along the way.">
+<meta name="author" content="Ankit Surana">
+<link rel="canonical" href="https://ankitsurana.dev/">
+<meta name="theme-color" content="#08080a" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ankit Surana — Data &amp; AI Engineer">
+<meta property="og:description" content="Ten years of event-driven pipelines on AWS, plus AI products I build and ship on my own time.">
+<meta property="og:url" content="https://ankitsurana.dev/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ankit Surana — Data &amp; AI Engineer">
+<meta name="twitter:description" content="Ten years of event-driven pipelines on AWS, plus AI products I build and ship on my own time.">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2308080a'/%3E%3Ctext x='50' y='68' font-family='ui-monospace,monospace' font-size='46' font-weight='600' fill='%23f4f4f6' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Ankit Surana",
+"alternateName":"Ankit Kumar Surana",
+"jobTitle":"Associate Vice President, Data Engineer",
+"worksFor":{"@type":"Organization","name":"NatWest"},
+"url":"https://ankitsurana.dev/",
+"sameAs":["https://github.com/AnkitSurana","https://www.linkedin.com/in/ankitsurana002/"]}
+</script>
+
+<style>
+  :root {
+    --bg:#08080a;
+    --bg-alt:#101016;
+    --card:#141418;
+    --card-hi:#1a1a20;
+    --ink:#f4f4f6; --ink-2:#a4a4ae; --ink-3:#6a6a74;
+    --line:#22222a;
+    --kw:#8ab4f8; --sel:rgba(138,180,248,.22);
+    --ok:#3fb950;
+    /* Ambient rather than directional: a wide, low-offset blur reads as a lift
+       on all four sides, which is what replaces the borders. */
+    --shadow-1:0 0 20px rgba(0,0,0,.42), 0 8px 26px -10px rgba(0,0,0,.66);
+    --shadow-2:0 0 34px rgba(0,0,0,.5), 0 20px 48px -14px rgba(0,0,0,.82);
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,system-ui,sans-serif;
+    --mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+    --ease:cubic-bezier(0.22,1,0.36,1);
+    --ease-io:cubic-bezier(0.77,0,0.175,1);
+    /* consumed by the inlined diagram SVGs so they follow the theme toggle
+       rather than the operating system */
+    --diagram-bg:#0d1117; --diagram-panel:#161b22; --diagram-panel2:#1c2128;
+    --diagram-line:#30363d; --diagram-ink:#e6edf3; --diagram-ink2:#8b949e;
+    --diagram-ink3:#6e7681; --diagram-acc:#8ab4f8; --diagram-bad:#f85149;
+    --diagram-ok:#3fb950; --diagram-warn:#f0883e;
+    /* Surfaces. --ring is a hairline drawn with box-shadow so a card stays
+       visible against a same-coloured band without adding layout width. */
+    --surface:rgba(255,255,255,.06); --surface-hi:rgba(255,255,255,.10);
+    --ring:rgba(255,255,255,.09);
+    --btn-shadow:0 0 12px rgba(0,0,0,.30), 0 3px 10px -3px rgba(0,0,0,.5);
+    --btn-shadow-hi:0 0 20px rgba(0,0,0,.38), 0 10px 26px -6px rgba(0,0,0,.62);
+    /* one reading measure: banner text, breadcrumb and article share it */
+    --docw:min(760px, 100% - 48px);
+    color-scheme:dark;
+  }
+  :root[data-theme="light"]{
+    --bg:#fff; --bg-alt:#f4f5f8; --card:#fff; --card-hi:#fff;
+    --ink:#141418; --ink-2:#54545e; --ink-3:#8a8a94; --line:#e6e6ea;
+    --kw:#2b62c6; --sel:rgba(43,98,198,.14); --ok:#1a7f37;
+    --shadow-1:0 0 20px rgba(20,20,24,.07), 0 8px 26px -10px rgba(20,20,24,.16);
+    --shadow-2:0 0 34px rgba(20,20,24,.11), 0 20px 48px -14px rgba(20,20,24,.24);
+    --diagram-bg:#f6f8fa; --diagram-panel:#ffffff; --diagram-panel2:#f0f3f6;
+    --diagram-line:#d0d7de; --diagram-ink:#1f2328; --diagram-ink2:#59636e;
+    --diagram-ink3:#818b98; --diagram-acc:#0969da; --diagram-bad:#cf222e;
+    --diagram-ok:#1a7f37; --diagram-warn:#bc4c00;
+    --surface:#ffffff; --surface-hi:#ffffff;
+    --ring:rgba(20,20,24,.10);
+    --btn-shadow:0 0 12px rgba(20,20,24,.07), 0 3px 10px -3px rgba(20,20,24,.14);
+    --btn-shadow-hi:0 0 20px rgba(20,20,24,.10), 0 10px 26px -6px rgba(20,20,24,.22);
+    color-scheme:light;
+  }
+  @media (prefers-color-scheme: light){
+    :root:not([data-theme="dark"]){
+      --bg:#fff; --bg-alt:#f4f5f8; --card:#fff; --card-hi:#fff;
+      --ink:#141418; --ink-2:#54545e; --ink-3:#8a8a94; --line:#e6e6ea;
+      --kw:#2b62c6; --sel:rgba(43,98,198,.14); --ok:#1a7f37;
+      --shadow-1:0 0 20px rgba(20,20,24,.07), 0 8px 26px -10px rgba(20,20,24,.16);
+      --shadow-2:0 0 34px rgba(20,20,24,.11), 0 20px 48px -14px rgba(20,20,24,.24);
+    --diagram-bg:#f6f8fa; --diagram-panel:#ffffff; --diagram-panel2:#f0f3f6;
+    --diagram-line:#d0d7de; --diagram-ink:#1f2328; --diagram-ink2:#59636e;
+    --diagram-ink3:#818b98; --diagram-acc:#0969da; --diagram-bad:#cf222e;
+    --diagram-ok:#1a7f37; --diagram-warn:#bc4c00;
+    --surface:#ffffff; --surface-hi:#ffffff;
+    --ring:rgba(20,20,24,.10);
+    --btn-shadow:0 0 12px rgba(20,20,24,.07), 0 3px 10px -3px rgba(20,20,24,.14);
+    --btn-shadow-hi:0 0 20px rgba(20,20,24,.10), 0 10px 26px -6px rgba(20,20,24,.22);
+      color-scheme:light;
+    }
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+       -webkit-font-smoothing:antialiased;line-height:1.6;letter-spacing:-.01em;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  ::selection{background:var(--sel);}
+  :focus-visible{outline:2px solid var(--kw);outline-offset:3px;border-radius:8px;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+  .reading{width:var(--docw);margin-inline:auto;padding:0;}
+  .skip{position:absolute;left:-9999px;}
+  .skip:focus{left:12px;top:12px;z-index:99;background:var(--card);padding:10px 16px;border-radius:10px;}
+
+  /* ── atmosphere ───────────────────────────────────
+     A slow aurora behind the hero and a fine grain over everything. Both
+     are decorative and both stop dead under prefers-reduced-motion. */
+  .aurora{position:absolute;inset:-30% -10% auto -10%;height:150%;pointer-events:none;z-index:0;
+          filter:blur(70px);opacity:.5;}
+  .aurora b{position:absolute;display:block;border-radius:50%;mix-blend-mode:screen;}
+  .aurora b:nth-child(1){width:46vw;height:46vw;left:-6%;top:2%;background:radial-gradient(circle,#3b6ecc,transparent 66%);
+                         animation:drift1 26s var(--ease-io) infinite alternate;}
+  .aurora b:nth-child(2){width:38vw;height:38vw;right:2%;top:-6%;background:radial-gradient(circle,#7c4bd0,transparent 66%);
+                         animation:drift2 32s var(--ease-io) infinite alternate;}
+  .aurora b:nth-child(3){width:34vw;height:34vw;left:38%;top:34%;background:radial-gradient(circle,#2aa79b,transparent 66%);
+                         animation:drift3 38s var(--ease-io) infinite alternate;}
+  :root[data-theme="light"] .aurora{opacity:.3;}
+  @keyframes drift1{to{transform:translate3d(9%,7%,0) scale(1.12);}}
+  @keyframes drift2{to{transform:translate3d(-11%,10%,0) scale(1.16);}}
+  @keyframes drift3{to{transform:translate3d(6%,-9%,0) scale(0.9);}}
+
+  /* A soft light follows the cursor across the whole page. Pointer-driven
+     rather than looping, so nothing moves while you are reading, and it is
+     interpolated so it trails the cursor instead of snapping to it. */
+  .cursorglow{position:fixed;top:0;left:0;width:520px;height:520px;border-radius:50%;
+              margin:-260px 0 0 -260px;z-index:2;pointer-events:none;opacity:0;
+              background:radial-gradient(circle,color-mix(in srgb,var(--kw) 22%,transparent),transparent 62%);
+              filter:blur(36px);transition:opacity 500ms var(--ease);will-change:transform;}
+  .cursorglow.on{opacity:.55;}
+  :root[data-theme="light"] .cursorglow{opacity:0;}
+  :root[data-theme="light"] .cursorglow.on{opacity:.30;}
+
+  .grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.4;mix-blend-mode:overlay;
+         background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");}
+  :root[data-theme="light"] .grain{opacity:.22;}
+
+  /* reading / scroll progress */
+  .progress{position:fixed;top:0;left:0;height:2px;width:100%;z-index:60;transform-origin:0 50%;
+            transform:scaleX(0);background:linear-gradient(90deg,#8ab4f8,#c084fc,#6ee7b7);}
+
+  /* ticker strip between sections */
+  .ticker{overflow:hidden;border-block:1px solid var(--line);background:var(--bg);padding:13px 0;
+          -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
+  .ticker .track{display:flex;gap:0;width:max-content;animation:slide-left 46s linear infinite;}
+  .ticker span{font-family:var(--mono);font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;
+               color:var(--ink-3);padding:0 26px;white-space:nowrap;}
+  .ticker span::after{content:"\2022";margin-left:26px;color:var(--kw);opacity:.55;}
+  /* quieter variants so three strips do not all shout at the same volume */
+  .ticker.soft{background:var(--bg-alt);}
+  .ticker.soft .track{animation-duration:58s;}
+  /* every other strip runs the other way, so the page does not read as one
+     long conveyor belt travelling in a single direction */
+  .ticker.reverse .track{animation-direction:reverse;}
+  .ticker.soft span{font-size:12px;letter-spacing:.14em;}
+  .ticker.soft span::after{color:var(--ink-3);opacity:.5;}
+  @keyframes slide-left{to{transform:translateX(-50%);}}
+
+  /* ── nav ─────────────────────────────────────────── */
+  .nav{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 80%,transparent);
+       backdrop-filter:saturate(160%) blur(16px);-webkit-backdrop-filter:saturate(160%) blur(16px);}
+  .nav .row{max-width:1120px;margin:0 auto;padding:0 28px;height:64px;
+            display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  /* Square mark plus wordmark, scaled to a 64px bar and set in the site's own
+     stack, so it sits with the rest of the page rather than importing a face
+     that appears nowhere else. */
+  .brand{display:inline-flex;align-items:center;gap:13px;color:var(--ink);flex:none;}
+  .brand-mark{min-width:38px;height:30px;flex:none;display:grid;place-items:center;
+              border:1px solid currentColor;box-sizing:border-box;padding:0 6px 0 7px;
+              font-family:var(--sans);font-size:12px;font-weight:500;line-height:1;
+              letter-spacing:.08em;
+              transition:background-color 200ms var(--ease),color 200ms var(--ease);}
+  .brand-name{font-family:var(--sans);font-weight:450;font-size:12px;
+              letter-spacing:.2em;text-transform:uppercase;white-space:nowrap;
+              padding-right:.2em;}
+  @media (max-width:900px){ .brand-name{letter-spacing:.13em;} }
+  @media (hover:hover) and (pointer:fine){
+    .brand:hover .brand-mark{background:var(--ink);color:var(--bg);}
+  }
+  @media (max-width:620px){ .brand-name{display:none;} }
+  .nav .mid{display:flex;gap:2px;}
+  .nav .mid a{font-size:14px;color:var(--ink-2);padding:8px 13px;border-radius:9px;
+              transition:color 160ms var(--ease);}
+  .nav .end{display:flex;gap:6px;align-items:center;}
+  /* just another item in the bar */
+  .navlink{font-size:14px;font-weight:550;color:var(--ink);padding:8px 13px;border-radius:9px;
+           transition:color 160ms var(--ease),background-color 160ms var(--ease);}
+  @media (hover:hover) and (pointer:fine){ .navlink:hover{background:var(--card);} }
+
+  /* ── buttons ───────────────────────────────────────
+     Foil is a background layer, never an overlay: a positioned pseudo-element
+     paints above the label, which is what made text on the dark buttons
+     disappear as it faded in. */
+  .pill{font-size:13.5px;font-weight:550;padding:10px 17px;border-radius:999px;border:0;
+        color:var(--ink);display:inline-flex;align-items:center;gap:7px;cursor:pointer;
+        font-family:inherit;background-color:var(--surface);
+        background-image:none;background-size:220% 100%;background-position:0% 50%;
+        box-shadow:var(--btn-shadow);
+        transition:transform 150ms var(--ease),background-color 180ms var(--ease),
+                   background-position 700ms var(--ease),box-shadow 200ms var(--ease);}
+  .pill:active{transform:scale(0.97);}
+  .pill.solid{background-color:var(--ink);color:var(--bg);
+              box-shadow:0 2px 10px -3px rgba(0,0,0,.45);}
+
+  .chip{font-family:var(--mono);font-size:12px;color:var(--ink-2);cursor:pointer;border:0;
+        background-color:var(--surface);background-image:none;
+        background-size:220% 100%;background-position:0% 50%;
+        border-radius:999px;padding:8px 14px;box-shadow:var(--btn-shadow);
+        transition:color 150ms var(--ease),background-color 150ms var(--ease),
+                   background-position 700ms var(--ease),transform 150ms var(--ease);}
+  .chip:active{transform:scale(0.96);}
+  .chip[aria-pressed="true"]{color:var(--bg);background-color:var(--ink);background-image:none;}
+
+  .pager button{font-family:var(--mono);font-size:13px;color:var(--ink-2);cursor:pointer;border:0;
+                background-color:var(--surface);background-image:none;
+                background-size:220% 100%;background-position:0% 50%;
+                border-radius:11px;min-width:38px;height:38px;padding:0 12px;
+                box-shadow:var(--btn-shadow);
+                transition:color 150ms var(--ease),background-color 150ms var(--ease),
+                           background-position 700ms var(--ease),transform 150ms var(--ease);}
+  .pager button:active{transform:scale(0.95);}
+  .pager button[aria-current="true"]{color:var(--bg);background-color:var(--ink);}
+  .pager button:disabled{opacity:.35;cursor:default;}
+
+  @media (hover:hover) and (pointer:fine){
+    .pill:not(.solid):hover,
+    .chip:not([aria-pressed="true"]):hover,
+    .pager button:not(:disabled):not([aria-current="true"]):hover{
+      color:var(--ink);background-position:100% 50%;
+      background-image:linear-gradient(115deg,
+        rgba(255,110,140,.26) 0%, rgba(255,196,113,.22) 20%, rgba(110,231,183,.22) 42%,
+        rgba(138,180,248,.28) 62%, rgba(192,132,252,.24) 82%, rgba(255,110,140,.22) 100%);
+      box-shadow:var(--btn-shadow-hi);}
+    /* the solid button keeps its own colour; a wash over near-black only muddies it */
+    .pill.solid:hover{background-image:none;box-shadow:0 6px 20px -4px rgba(0,0,0,.5);}
+  }
+  :root[data-theme="light"] .pill:not(.solid):hover,
+  :root[data-theme="light"] .chip:not([aria-pressed="true"]):hover,
+  :root[data-theme="light"] .pager button:not(:disabled):not([aria-current="true"]):hover{
+    background-image:linear-gradient(115deg,
+      rgba(255,142,163,.22) 0%, rgba(255,209,150,.20) 20%, rgba(151,232,205,.20) 42%,
+      rgba(158,190,255,.24) 62%, rgba(206,163,255,.22) 82%, rgba(255,142,163,.20) 100%);}
+
+
+  /* sits in the bar like the links do: no surface until you hover it */
+  .tbtn{font-size:15px;color:var(--ink-3);background:transparent;border:0;cursor:pointer;
+        font-family:inherit;padding:8px 11px;border-radius:9px;box-shadow:none;
+        transition:color 160ms var(--ease),background-color 160ms var(--ease),transform 150ms var(--ease);}
+  .tbtn:active{transform:scale(0.94);}
+  @media (hover:hover) and (pointer:fine){
+    .nav .mid a:hover{color:var(--ink);background:var(--card);}
+    .tbtn:hover{color:var(--ink);background:var(--card);}
+  }
+
+  /* ── view switching ──────────────────────────────── */
+  #doc-view{display:none;}
+  body[data-view="doc"] #site{display:none;}
+  body[data-view="doc"] #doc-view{display:block;}
+
+  .fade{animation:fade 380ms var(--ease) both;}
+  @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+  /* .rv only hides once JS has opted in via .reveal-on. Without that class the
+     content is plainly visible, so a scripting failure degrades to a static
+     page rather than a blank one. */
+  .reveal-on .rv{opacity:0;transform:translateY(16px);
+                 transition:opacity 460ms var(--ease),transform 460ms var(--ease);}
+  .reveal-on .rv.in{opacity:1;transform:none;}
+
+  /* ── section rhythm ──────────────────────────────── */
+  .band{padding:92px 0;}
+  .band.alt{background:var(--bg-alt);}
+  .shead{display:flex;align-items:baseline;gap:16px;margin-bottom:14px;}
+  .snum{font-family:var(--mono);font-size:12.5px;color:var(--ink-3);letter-spacing:.08em;padding-top:4px;flex:none;}
+  .shead h2{font-size:clamp(28px,4.2vw,40px);letter-spacing:-.035em;font-weight:640;margin:0;}
+  .lead{font-size:17px;color:var(--ink-2);margin:0 0 44px;max-width:58ch;padding-left:40px;text-wrap:pretty;}
+
+  /* ── hero ────────────────────────────────────────── */
+  .hero{padding:84px 0 92px;position:relative;overflow:hidden;}
+  .hero .wrap{position:relative;z-index:2;}
+  .hero .grid{display:grid;grid-template-columns:minmax(0,1.15fr) 340px;gap:64px;align-items:center;}
+  .hero .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:0 0 24px;}
+  .hero h1{font-size:clamp(38px,5.6vw,62px);line-height:1.03;letter-spacing:-.045em;font-weight:640;
+           margin:0 0 26px;text-wrap:balance;}
+  .hero .sub{font-size:18px;color:var(--ink-2);margin:0 0 34px;max-width:48ch;}
+  .hero .cta{display:flex;gap:11px;flex-wrap:wrap;}
+
+  /* hero portrait card */
+  .portrait{width:100%;aspect-ratio:4/5;border-radius:20px;background:var(--card);
+            border:0;box-shadow:var(--shadow-2);display:grid;place-items:center;
+            position:relative;overflow:hidden;}
+  .portrait img{width:100%;height:100%;object-fit:cover;}
+  .pmeta{display:flex;justify-content:space-between;gap:12px;margin-top:14px;font-size:12.5px;
+         color:var(--ink-3);font-family:var(--mono);}
+  .pmeta .live{display:inline-flex;align-items:center;gap:7px;color:var(--ink-2);}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--ok);flex:none;
+       box-shadow:0 0 0 3px color-mix(in srgb,var(--ok) 18%,transparent);}
+
+  /* ── holographic foil ─────────────────────────────
+     The foil itself is static. Only the pointer glare and a small
+     tilt move, and both are hover-only, so nothing animates while
+     you are trying to read the page. */
+  .holo{position:relative;overflow:hidden;transform-style:preserve-3d;will-change:transform;
+        transition:transform 400ms var(--ease);}
+  .portrait[data-holo]{transform:perspective(700px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));}
+  .portrait[data-holo].is-tilting{transition:transform 90ms linear;}
+  .holo > .layer{position:absolute;inset:0;pointer-events:none;}
+  .holo .film{mix-blend-mode:color-dodge;opacity:.10;
+        background:repeating-linear-gradient(100deg,#ff5f6d 0 8%,#ffc371 12%,#6ee7b7 20%,#8ab4f8 28%,#c084fc 36%,#ff5f6d 44%);
+        background-size:200% 100%;}
+  .holo .sheen{mix-blend-mode:screen;opacity:.55;
+        background:linear-gradient(115deg,transparent 36%,rgba(138,180,248,.2) 46%,rgba(180,140,248,.22) 50%,
+                   rgba(120,220,200,.16) 55%,transparent 66%);}
+  .holo .glare{mix-blend-mode:soft-light;opacity:0;transition:opacity 260ms var(--ease);
+        background:radial-gradient(circle at var(--mx,50%) var(--my,40%),rgba(255,255,255,.55),transparent 46%);}
+  .holo .edge{box-shadow:inset 0 0 0 1px rgba(255,255,255,.07);}
+  @media (hover:hover) and (pointer:fine){
+    .holo:hover .glare{opacity:1;}
+    /* the card is the thing that lifts, so its cover reacts to the card's hover */
+    a.card:hover .card-cover .glare{opacity:1;}
+  }
+  /* Foil belongs on a photograph. With only the placeholder behind it the
+     blend modes turn to mud, so dial it back until a real image is dropped in. */
+  .portrait:not(:has(img)) .film{opacity:.03;}
+  .portrait:not(:has(img)) .sheen{opacity:.16;}
+  /* In light mode the multiply blend greys the artwork out, which reads as a
+     faded image rather than foil. Keep it on the portrait, drop it elsewhere. */
+  :root[data-theme="light"] .card-cover .film,
+  :root[data-theme="light"] .card-cover .sheen{display:none;}
+  :root[data-theme="light"] .portrait .film{mix-blend-mode:multiply;opacity:.05;}
+  :root[data-theme="light"] .portrait .sheen{mix-blend-mode:multiply;opacity:.22;}
+  @media (prefers-color-scheme: light){
+    :root:not([data-theme="dark"]) .card-cover .film,
+    :root:not([data-theme="dark"]) .card-cover .sheen{display:none;}
+    :root:not([data-theme="dark"]) .portrait .film{mix-blend-mode:multiply;opacity:.05;}
+    :root:not([data-theme="dark"]) .portrait .sheen{mix-blend-mode:multiply;opacity:.22;}
+  }
+
+  /* ── adaptive card grid ───────────────────────────
+     auto-fill + minmax means adding a fifth or ninth item reflows
+     on its own. No featured tile to rebalance by hand. */
+  /* search and tag filters. one row, wraps on small screens. */
+  .toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:0 0 26px;}
+  .search{flex:1 1 260px;min-width:200px;position:relative;display:flex;align-items:center;}
+  .search input{width:100%;font-family:inherit;font-size:14.5px;color:var(--ink);
+                background:var(--surface);backdrop-filter:blur(12px) saturate(160%);
+                -webkit-backdrop-filter:blur(12px) saturate(160%);
+                border:0;border-radius:999px;padding:12px 16px 12px 40px;outline:none;
+                box-shadow:var(--btn-shadow);
+                transition:border-color 160ms var(--ease),box-shadow 160ms var(--ease);}
+  .search input::placeholder{color:var(--ink-3);}
+  .search input:focus{border-color:color-mix(in srgb,var(--kw) 55%,transparent);
+                      box-shadow:0 0 0 4px color-mix(in srgb,var(--kw) 12%,transparent);}
+  .search svg{position:absolute;left:15px;width:15px;height:15px;stroke:var(--ink-3);fill:none;stroke-width:2;}
+  .search kbd{position:absolute;right:14px;font-family:var(--mono);font-size:11px;color:var(--ink-3);
+              border:1px solid var(--line);border-radius:5px;padding:1px 6px;pointer-events:none;}
+  .search input:focus ~ kbd{opacity:0;}
+  .chips{display:flex;gap:7px;flex-wrap:wrap;}
+  .chip{font-family:var(--mono);font-size:12px;color:var(--ink-2);cursor:pointer;
+        background:var(--surface);backdrop-filter:blur(12px) saturate(160%);
+        -webkit-backdrop-filter:blur(12px) saturate(160%);
+        border:0;border-radius:999px;padding:8px 14px;
+        box-shadow:var(--btn-shadow);
+        transition:color 150ms var(--ease),border-color 150ms var(--ease),background-color 150ms var(--ease),transform 150ms var(--ease);}
+  .chip:active{transform:scale(0.96);}
+  .chip[aria-pressed="true"]{color:var(--bg);background:var(--ink);border-color:var(--ink);}
+  @media (hover:hover) and (pointer:fine){ .chip:hover{border-color:var(--ink-3);color:var(--ink);} }
+  .count{font-size:13px;color:var(--ink-3);font-family:var(--mono);margin-left:auto;}
+  .empty{grid-column:1/-1;padding:44px 0;text-align:center;color:var(--ink-3);font-size:15px;}
+  .empty button{margin-top:14px;}
+
+  .grid{display:grid;gap:22px;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));align-items:stretch;}
+  /* The pager lives outside the grid. As a grid child it was auto-placed into
+     a column and stretched to card height, which is what made it look adrift. */
+  .pager{display:flex;justify-content:center;align-items:center;gap:6px;
+         margin-top:clamp(26px,3.4vw,38px);flex-wrap:wrap;}
+  .pager button{font-family:var(--mono);font-size:13px;color:var(--ink-2);cursor:pointer;
+                background:var(--surface);backdrop-filter:blur(14px) saturate(170%);
+                -webkit-backdrop-filter:blur(14px) saturate(170%);
+                border:0;border-radius:11px;min-width:38px;height:38px;padding:0 12px;
+                box-shadow:var(--btn-shadow);
+                transition:color 150ms var(--ease),background-color 160ms var(--ease),
+                           box-shadow 160ms var(--ease),transform 150ms var(--ease);}
+  .pager button:active{transform:scale(0.95);}
+  .pager button[aria-current="true"]{color:var(--bg);background:var(--ink);
+                                     box-shadow:inset 0 1px 0 rgba(255,255,255,.18);}
+  .pager button[aria-current="true"]::before{display:none;}
+  .pager button:disabled{opacity:.35;cursor:default;}
+  .pager button:disabled::before{display:none;}
+  .pager .gap{color:var(--ink-3);padding:0 4px;font-family:var(--mono);font-size:13px;}
+
+  /* No outlines. Depth comes from the surface tint and the shadow, so nothing
+     hard-edged appears under the cursor on hover. */
+  .card{background:var(--card);border:0;border-radius:18px;box-shadow:var(--shadow-1);
+        overflow:hidden;display:flex;flex-direction:column;position:relative;
+        transition:transform 260ms var(--ease),box-shadow 260ms var(--ease),
+                   border-color 260ms var(--ease),background-color 260ms var(--ease);}
+  a.card{cursor:pointer;transform-style:preserve-3d;
+         transform:perspective(760px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));}
+  a.card:active{transform:perspective(760px) translateY(-2px) scale(0.994)
+                          rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));}
+  /* while the pointer is on it the tilt tracks quickly; on leave it settles
+     back on the card's own slower curve */
+  a.card.is-tilting{will-change:transform;
+                    transition:transform 90ms linear,
+                               box-shadow 260ms var(--ease),
+                               background-color 260ms var(--ease);}
+  /* a soft spotlight tracks the cursor across the card */
+  .card::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0;
+                transition:opacity 300ms var(--ease);border-radius:inherit;
+                background:radial-gradient(340px circle at var(--cx,50%) var(--cy,50%),
+                           color-mix(in srgb,var(--kw) 13%,transparent),transparent 62%);}
+  @media (hover:hover) and (pointer:fine){
+    a.card:hover{transform:perspective(760px) translateY(-6px) scale(1.012)
+                           rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));
+                 background:var(--card-hi);box-shadow:var(--shadow-2);}
+    a.card:hover::before{opacity:1;}
+    a.card:hover .go{color:var(--ink);gap:12px;}
+  }
+  .card-body{padding:24px 24px 22px;display:flex;flex-direction:column;flex:1;}
+  .card .lbl{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0 0 11px;
+             display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  /* Clamped so a long title or blurb cannot make one card taller than the
+     rest of its row. This is what keeps the grid tidy as content grows. */
+  .card h3{font-size:21px;letter-spacing:-.028em;font-weight:620;margin:0 0 9px;line-height:1.25;
+           display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+  .card p{font-size:15px;color:var(--ink-2);line-height:1.6;margin:0 0 16px;text-wrap:pretty;
+          display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+  .card .go{font-size:13.5px;color:var(--ink-3);margin-top:auto;display:inline-flex;align-items:center;gap:7px;
+            transition:color 200ms var(--ease),gap 200ms var(--ease);}
+  .stack{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 16px;}
+  .stack span{font-family:var(--mono);font-size:11px;color:var(--ink-2);background:var(--bg-alt);
+              border:1px solid var(--line);border-radius:6px;padding:3px 8px;}
+  :root[data-theme="light"] .stack span{background:#f2f2f5;}
+  .card-cover{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--bg-alt);flex:none;}
+  .card-cover canvas,.card-cover img{width:100%;height:100%;object-fit:cover;display:block;}
+
+  /* private / public badge */
+  .badge{font-family:var(--mono);font-size:10px;letter-spacing:.06em;padding:3px 7px;border-radius:5px;
+         border:1px solid var(--line);color:var(--ink-3);text-transform:none;}
+  .badge.pub{color:var(--ok);border-color:color-mix(in srgb,var(--ok) 40%,transparent);}
+
+  /* ── about ─────────────────────────────────────────
+     The statement runs full width as a lead-in, then prose and the
+     side rail sit in two columns of comparable weight. The rail holds
+     both the Now card and the record, so the column fills instead of
+     trailing off into empty space beside the last paragraph. */
+  .statement{font-size:clamp(27px,4vw,42px);line-height:1.16;letter-spacing:-.038em;font-weight:620;
+             text-wrap:balance;max-width:24ch;margin:30px 0 46px;}
+  .about-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(300px,1fr);gap:clamp(32px,4vw,56px);align-items:start;}
+  .bio p{font-size:17px;color:var(--ink-2);line-height:1.75;margin:0 0 22px;
+         text-wrap:pretty;hyphens:auto;}
+  .bio p:last-child{margin-bottom:0;}
+  .bio b{color:var(--ink);font-weight:600;}
+
+  /* The prose is taller than the panel, so the panel travels with the reader
+     instead of leaving a hole beside the last paragraph. */
+  .rail{display:flex;flex-direction:column;gap:18px;position:sticky;top:88px;}
+  @media (max-width:880px){ .rail{position:static;} }
+  .panel{position:relative;background:var(--card);border:0;border-radius:16px;
+         padding:22px 22px 20px;box-shadow:var(--shadow-1);transform-style:preserve-3d;
+         transform:perspective(760px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));
+         transition:transform 280ms var(--ease),box-shadow 280ms var(--ease);}
+  .panel.is-tilting{will-change:transform;
+                    transition:transform 90ms linear,box-shadow 280ms var(--ease);}
+  /* the same cursor spotlight the cards use, fed by --mx / --my */
+  .panel::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+                 opacity:0;transition:opacity 300ms var(--ease);
+                 background:radial-gradient(300px circle at var(--mx,50%) var(--my,50%),
+                            color-mix(in srgb,var(--kw) 12%,transparent),transparent 62%);}
+  @media (hover:hover) and (pointer:fine){
+    .panel:hover{transform:perspective(760px) translateY(-4px) scale(1.008)
+                           rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));
+                 box-shadow:var(--shadow-2);}
+    .panel:hover::before{opacity:1;}
+  }
+
+  /* Annotated claims. The number stays in the sentence; the detail behind it
+     is one hover away instead of padding the paragraph out. */
+  .anno{font:inherit;color:var(--ink);background:none;border:0;padding:0;cursor:help;
+        position:relative;text-decoration:underline;text-decoration-style:dotted;
+        text-underline-offset:4px;text-decoration-thickness:1px;
+        text-decoration-color:color-mix(in srgb,var(--kw) 60%,transparent);
+        transition:color 160ms var(--ease),text-decoration-color 160ms var(--ease);}
+  .anno:hover,.anno:focus-visible{color:var(--kw);text-decoration-color:var(--kw);}
+  .anno-pop{position:fixed;z-index:70;max-width:330px;padding:14px 16px;border-radius:13px;
+            background:var(--card);box-shadow:var(--shadow-2);color:var(--ink-2);
+            font-size:14px;line-height:1.55;letter-spacing:-.005em;
+            opacity:0;transform:translateY(6px) scale(0.98);pointer-events:none;
+            transform-origin:top left;
+            transition:opacity 200ms var(--ease),transform 200ms var(--ease);}
+  .anno-pop.on{opacity:1;transform:translateY(0) scale(1);}
+  .panel .h{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:0 0 16px;
+            display:flex;align-items:center;gap:8px;}
+  .panel ul{list-style:none;margin:0;padding:0;}
+
+  /* labelled rows rather than bullets: the label carries the meaning, so the
+     eye can scan the left column instead of reading four similar lines */
+  .nowlist{margin:0;padding:0;display:grid;grid-template-columns:auto 1fr;gap:0 16px;align-items:baseline;}
+  .nowlist dt{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+              color:var(--ink-3);padding:9px 0;white-space:nowrap;}
+  .nowlist dd{margin:0;font-size:14.5px;color:var(--ink-2);line-height:1.5;padding:9px 0;text-wrap:pretty;}
+  .nowlist dt + dd{border-top:0;}
+  .panel .when{font-size:11.5px;color:var(--ink-3);margin:16px 0 0;font-family:var(--mono);}
+
+  /* record entries: spacing rather than rules between them */
+
+  /* ── skills ──────────────────────────────────────── */
+  .skillgrid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));}
+  .scard{position:relative;background:var(--card);border:0;border-radius:16px;padding:22px;
+         box-shadow:var(--shadow-1);transform-style:preserve-3d;
+         transform:perspective(700px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));
+         transition:transform 260ms var(--ease),box-shadow 260ms var(--ease);}
+  .scard.is-tilting{will-change:transform;
+                    transition:transform 90ms linear,box-shadow 260ms var(--ease);}
+  .scard::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+                 opacity:0;transition:opacity 300ms var(--ease);
+                 background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),
+                            color-mix(in srgb,var(--kw) 12%,transparent),transparent 60%);}
+  @media (hover:hover) and (pointer:fine){
+    .scard:hover{transform:perspective(700px) translateY(-4px) scale(1.01)
+                           rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));
+                 box-shadow:var(--shadow-2);}
+    .scard:hover::before{opacity:1;}
+  }
+  .scard .h{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0 0 14px;}
+  .scard .items{display:flex;flex-wrap:wrap;gap:8px;}
+  .scard .items span{font-family:var(--mono);font-size:12.5px;color:var(--ink);background:var(--bg-alt);
+                     border:1px solid var(--line);border-radius:7px;padding:5px 10px;}
+  :root[data-theme="light"] .scard .items span{background:#f2f2f5;}
+
+  /* ── post card extras ────────────────────────────── */
+  .pcard .tags{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 10px;}
+  .pcard .tags span{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);}
+  .pcard .tags span + span::before{content:"\00b7";margin-right:8px;}
+  /* pushed to the foot of the card so the date sits on one line across the
+     row, whatever length the title above it happens to be */
+  .pcard .m{font-size:12px;color:var(--ink-3);font-family:var(--mono);margin:auto 0 0;padding-top:4px;}
+  .pcard p:not(.m){margin-bottom:14px;}
+
+  /* ── impact ────────────────────────────────────────
+     Result first, method second. The figure is the anchor so the column can be
+     scanned in a few seconds, which is roughly the attention a page like this
+     gets on a first pass. Rows, not tiles: a dashboard of counters would say
+     less and take more room. */
+  .impact{margin-top:clamp(40px,5vw,64px);}
+  .impact-h{font-family:var(--mono);font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;
+            color:var(--ink-3);margin:0 0 clamp(18px,2.4vw,26px);}
+  .impact ol{list-style:none;margin:0;padding:0;display:grid;gap:clamp(18px,2.4vw,26px) clamp(32px,4vw,56px);
+             grid-template-columns:repeat(auto-fit,minmax(340px,1fr));}
+  /* Aligning the cap heights, not the baselines. Baseline alignment is
+     typographically correct but reads as wrong here: a 25px figure next to
+     15.5px copy has its cap sitting well above the text, which is what looks
+     unaligned. The nudge is derived from the size difference rather than
+     hard-coded, so it holds as the figure clamps down on narrow screens.
+     0.58 is the measured ratio between the size gap and the cap-top offset
+     for this font stack. */
+  .impact li{--fig-size:clamp(20px,2.2vw,25px);
+             --txt-size:15.5px;
+             --impact-lh:25px;
+             display:grid;grid-template-columns:74px 1fr;gap:18px;align-items:start;}
+  .impact .fig{font-size:var(--fig-size);font-weight:640;letter-spacing:-.035em;
+               color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap;
+               line-height:var(--impact-lh);
+               transform:translateY(calc((var(--fig-size) - var(--txt-size)) * 0.58));}
+  .impact .txt{font-size:var(--txt-size);line-height:var(--impact-lh);
+               color:var(--ink-2);text-wrap:pretty;}
+
+  .record{margin-top:clamp(44px,5.5vw,68px);}
+  .record-h{font-family:var(--mono);font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;
+            color:var(--ink-3);margin:0 0 16px;}
+  .record-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));}
+  .rcard{position:relative;background:var(--card);border:0;border-radius:14px;padding:16px 18px;
+         box-shadow:var(--shadow-1);display:flex;justify-content:space-between;gap:14px;
+         align-items:flex-start;transform-style:preserve-3d;
+         transform:perspective(700px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));
+         transition:transform 260ms var(--ease),box-shadow 260ms var(--ease);}
+  .rcard.is-tilting{will-change:transform;
+                    transition:transform 90ms linear,box-shadow 260ms var(--ease);}
+  .rcard::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+                 opacity:0;transition:opacity 300ms var(--ease);
+                 background:radial-gradient(220px circle at var(--mx,50%) var(--my,50%),
+                            color-mix(in srgb,var(--kw) 12%,transparent),transparent 60%);}
+  @media (hover:hover) and (pointer:fine){
+    .rcard:hover{transform:perspective(700px) translateY(-3px) scale(1.01)
+                           rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));
+                 box-shadow:var(--shadow-2);}
+    .rcard:hover::before{opacity:1;}
+  }
+  .rcard .t{font-size:14.5px;font-weight:560;letter-spacing:-.015em;color:var(--ink);line-height:1.35;}
+  .rcard .t small{display:block;font-size:12.5px;font-weight:400;color:var(--ink-3);margin-top:4px;
+                  letter-spacing:0;line-height:1.45;}
+  .rcard .yr{font-family:var(--mono);font-size:11px;color:var(--ink-3);flex:none;padding-top:2px;white-space:nowrap;}
+
+  /* ── contact band ────────────────────────────────── */
+  .contact{position:relative;overflow:hidden;padding:88px 0;background:var(--bg-alt);}
+  .contact .inner{position:relative;z-index:2;text-align:center;}
+  .contact h2{font-size:clamp(30px,5vw,52px);letter-spacing:-.04em;font-weight:640;margin:0 0 16px;text-wrap:balance;}
+  .contact p{font-size:17.5px;color:var(--ink-2);margin:0 auto 32px;max-width:52ch;}
+  .contact .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+  .contact .pill{padding:13px 26px;font-size:15px;}
+  .contact .note{margin-top:26px;font-size:13px;color:var(--ink-3);font-family:var(--mono);}
+
+  /* ── comments ────────────────────────────────────── */
+  .comments{margin-top:56px;padding-top:34px;border-top:1px solid var(--line);}
+  .comments h2{font-size:20px;letter-spacing:-.028em;font-weight:620;margin:0 0 18px;}
+  .comments-off{background:var(--card);border:1px dashed var(--line);border-radius:14px;padding:20px 22px;
+                color:var(--ink-3);font-size:14.5px;line-height:1.6;}
+  .comments-off code{font-family:var(--mono);font-size:12.5px;background:var(--bg-alt);
+                     border-radius:5px;padding:2px 6px;color:var(--ink-2);}
+  .comments-off p{margin:0 0 12px;} .comments-off ol{margin:0 0 12px;padding-left:20px;}
+  .comments-off li{margin:6px 0;} .comments-off strong{color:var(--ink);}
+  .comments-off .why{font-size:13px;opacity:.8;margin:0;}
+  .comments-off a{color:var(--kw);text-decoration:underline;text-underline-offset:3px;}
+
+  /* ── footer ──────────────────────────────────────── */
+  .foot{background:var(--bg-alt);padding:64px 0 76px;}
+  .foot .row{max-width:1120px;margin:0 auto;padding:0 28px;display:flex;justify-content:space-between;
+             flex-wrap:wrap;gap:20px;align-items:end;}
+  .foot .big{font-size:24px;font-weight:620;letter-spacing:-.03em;margin:0;}
+  .foot .sm{font-size:14px;color:var(--ink-3);margin:8px 0 0;}
+  .foot .colophon{font-size:13.5px;color:var(--ink-3);line-height:1.6;margin:0;text-align:right;}
+
+  /* ── doc (post + project) view ───────────────────── */
+  /* ── doc banner ────────────────────────────────────
+     One shared container width keeps the back control, the breadcrumb, the
+     banner text and the article all on the same left edge at every size. */
+  .docwrap{width:var(--docw);margin-inline:auto;}
+  .docbar{padding:18px 0 14px;}
+  .crumbs{display:flex;align-items:center;gap:14px;font-size:13.5px;color:var(--ink-3);flex-wrap:wrap;}
+  .trail{display:flex;align-items:center;gap:9px;min-width:0;flex-wrap:wrap;}
+  .trail .here{color:var(--ink-2);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+
+  /* text and an arrow. No surface, no shadow, nothing to hover into. */
+  .backlink{display:inline-flex;align-items:center;gap:7px;flex:none;
+            color:var(--ink-3);font-size:13.5px;background:none;box-shadow:none;
+            border:0;padding:0;margin-right:2px;
+            transition:color 160ms var(--ease),gap 180ms var(--ease);}
+  @media (hover:hover) and (pointer:fine){
+    .backlink:hover{color:var(--ink);gap:11px;}
+  }
+
+  .doc-hero{position:relative;width:100%;overflow:hidden;isolation:isolate;
+            display:flex;align-items:flex-end;
+            min-height:clamp(220px,30vw,360px);margin-bottom:clamp(26px,4vw,44px);}
+  .doc-hero-art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;}
+  .doc-hero::after{content:"";position:absolute;inset:0;z-index:-1;
+                   background:linear-gradient(105deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.34) 45%,rgba(0,0,0,.12) 100%);}
+  .doc-hero-inner{width:var(--docw);margin-inline:auto;padding:clamp(26px,4vw,52px) 0 clamp(24px,3.4vw,44px);
+                  color:#fff;}
+  .doc-hero-inner .kicker{display:flex;gap:14px;flex-wrap:wrap;margin:0 0 clamp(12px,1.6vw,18px);
+                          font-family:var(--mono);font-size:clamp(10.5px,1.05vw,12.5px);
+                          letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.72);}
+  .doc-hero-inner h1{font-size:clamp(26px,3.6vw,44px);line-height:1.08;letter-spacing:-.035em;
+                     font-weight:640;margin:0;text-wrap:balance;color:#fff;}
+  .doc-hero-inner .standfirst{font-size:clamp(15px,1.4vw,18.5px);line-height:1.55;
+                              margin:clamp(12px,1.6vw,18px) 0 0;color:rgba(255,255,255,.8);}
+  .doc-hero-inner .stamp{font-family:var(--mono);font-size:clamp(11px,1.1vw,13px);
+                         margin:clamp(14px,1.8vw,22px) 0 0;color:rgba(255,255,255,.62);}
+
+  .art{padding:0 0 0;}
+  .art .tags{font-size:12px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3);
+             display:flex;gap:14px;flex-wrap:wrap;margin-bottom:18px;align-items:center;}
+  .art h1{font-size:clamp(30px,4.6vw,44px);line-height:1.09;letter-spacing:-.04em;font-weight:640;
+          margin:0 0 18px;text-wrap:balance;}
+  .art .standfirst{font-size:19px;line-height:1.55;color:var(--ink-2);margin:0 0 22px;}
+  .art .meta{font-size:13px;color:var(--ink-3);font-family:var(--mono);margin:0;}
+  .art .cover{margin:34px 0 40px;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-1);}
+  /* header art carries the title, so it gets the full reading width */
+  .unlisted{font-family:var(--mono);font-size:12px;color:#f0883e;background:color-mix(in srgb,#f0883e 12%,transparent);
+            border:1px solid color-mix(in srgb,#f0883e 32%,transparent);border-radius:8px;
+            padding:8px 12px;margin:0 0 20px;}
+  .unlisted code{background:none;border:0;padding:0;color:inherit;}
+  .art .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;}
+
+  .prose{font-size:18px;line-height:1.75;color:var(--ink-2);text-wrap:pretty;hyphens:auto;}
+  .prose > * + *{margin-top:26px;}
+  .prose h2{color:var(--ink);font-size:25px;letter-spacing:-.032em;font-weight:620;margin-top:56px;line-height:1.25;}
+  .prose h3{color:var(--ink);font-size:19.5px;font-weight:600;margin-top:40px;}
+  .prose strong{color:var(--ink);font-weight:600;}
+  .prose em{font-style:italic;}
+  .prose a{color:var(--kw);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;
+           text-decoration-color:color-mix(in srgb,var(--kw) 40%,transparent);
+           transition:text-decoration-color 180ms var(--ease);}
+  @media (hover:hover) and (pointer:fine){.prose a:hover{text-decoration-color:var(--kw);}}
+  .prose blockquote{margin:36px 0;padding:20px 24px;border-left:2px solid var(--kw);background:var(--bg-alt);
+                    border-radius:0 14px 14px 0;color:var(--ink);font-size:19.5px;line-height:1.5;}
+  .prose blockquote p{margin:0;}
+  .prose ul,.prose ol{padding-left:24px;}
+  .prose li{margin-top:10px;} .prose li::marker{color:var(--ink-3);}
+  .prose hr{border:0;height:1px;background:var(--line);margin:48px 0;}
+  /* Figures and rendered diagrams share one treatment: rounded, raised, and
+     they pick up the same foil sheen on hover as the rest of the surfaces. */
+  .prose figure{margin:clamp(30px,4vw,44px) 0;}
+  .prose figure .framed,
+  .prose .mermaid{position:relative;overflow:hidden;border-radius:16px;background:var(--bg-alt);
+                  box-shadow:var(--shadow-1);
+                  transition:transform 300ms var(--ease),box-shadow 300ms var(--ease);}
+  .prose figure .framed::after,
+  .prose .mermaid::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;
+    border-radius:inherit;mix-blend-mode:screen;
+    background:linear-gradient(115deg,transparent 30%,rgba(138,180,248,.16) 44%,
+               rgba(192,132,252,.18) 52%,rgba(110,231,183,.14) 60%,transparent 74%);
+    background-size:220% 100%;background-position:0% 50%;
+    transition:opacity 320ms var(--ease),background-position 900ms var(--ease);}
+  @media (hover:hover) and (pointer:fine){
+    .prose figure .framed:hover,
+    .prose .mermaid:hover{transform:translateY(-3px);box-shadow:var(--shadow-2);}
+    .prose figure .framed:hover::after,
+    .prose .mermaid:hover::after{opacity:1;background-position:100% 50%;}
+  }
+  :root[data-theme="light"] .prose figure .framed::after,
+  :root[data-theme="light"] .prose .mermaid::after{mix-blend-mode:multiply;}
+
+  .prose figure img,
+  .prose figure .figure-svg{width:100%;height:auto;display:block;min-height:140px;
+                            background:var(--bg-alt);border:0;}
+  .prose .missing{border-radius:14px;border:1px dashed var(--line);background:var(--bg-alt);min-height:180px;
+                  display:grid;place-items:center;color:var(--ink-3);font-family:var(--mono);
+                  font-size:12.5px;text-align:center;padding:24px;}
+  .prose figcaption{font-size:13.5px;color:var(--ink-3);text-align:center;margin-top:13px;line-height:1.5;}
+  .prose pre{font-family:var(--mono);font-size:13.5px;line-height:1.7;background:var(--bg-alt);
+             border:1px solid var(--line);border-radius:14px;padding:20px 22px;overflow-x:auto;margin:30px 0;}
+  .prose pre code{font-family:inherit;background:none;border:0;padding:0;color:var(--ink-2);font-size:inherit;}
+  .prose :not(pre) > code{font-family:var(--mono);font-size:.85em;background:var(--bg-alt);
+                          border:1px solid var(--line);border-radius:6px;padding:2px 6px;color:var(--ink);}
+  .prose .tablewrap{overflow-x:auto;margin:32px 0;border:1px solid var(--line);border-radius:14px;}
+  .prose table{border-collapse:collapse;width:100%;font-size:15px;}
+  .prose th,.prose td{text-align:left;padding:13px 18px;border-bottom:1px solid var(--line);}
+  .prose thead th{color:var(--ink);font-weight:600;font-size:13px;background:var(--bg-alt);}
+  .prose tbody tr:last-child td{border-bottom:0;}
+  .prose .mermaid{padding:clamp(18px,2.6vw,28px);margin:clamp(30px,4vw,40px) 0;text-align:center;}
+  .prose .mermaid svg{max-width:100%;height:auto;margin:0 auto;}
+
+  .tagfoot{margin-top:52px;padding-top:26px;border-top:1px solid var(--line);}
+  .tagfoot .h{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:0 0 14px;}
+  .tagfoot .stack{margin:0;}
+  .tagfoot .stack span{font-size:12.5px;padding:6px 12px;border-radius:999px;}
+
+  .art-foot{margin-top:44px;padding:30px 0 96px;border-top:1px solid var(--line);
+            display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center;}
+  .loading{padding:50px 0;color:var(--ink-3);font-family:var(--mono);font-size:13.5px;}
+  .loading .bar{height:2px;width:100%;background:var(--line);border-radius:2px;overflow:hidden;margin-bottom:18px;}
+  .loading .bar i{display:block;height:100%;width:38%;background:var(--kw);border-radius:2px;
+                  animation:slide 1.1s var(--ease-io) infinite;}
+  @keyframes slide{0%{transform:translateX(-100%);}100%{transform:translateX(320%);}}
+
+  .err{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 28px;
+       box-shadow:var(--shadow-1);grid-column:1/-1;}
+  .err h3{font-size:19px;letter-spacing:-.025em;margin:0 0 10px;color:var(--ink);}
+  .err p{color:var(--ink-2);margin:0 0 12px;font-size:15.5px;line-height:1.6;}
+  .err p:last-child{margin-bottom:0;}
+  .err code{font-family:var(--mono);font-size:13px;background:var(--bg-alt);border:1px solid var(--line);
+            border-radius:6px;padding:2px 7px;color:var(--ink);}
+  .err pre{font-family:var(--mono);font-size:12.5px;background:var(--bg-alt);border:1px solid var(--line);
+           border-radius:10px;padding:14px 16px;overflow-x:auto;margin:0 0 12px;color:var(--ink-2);}
+
+  /* Reduced motion means less movement, not a dead page. Travel, parallax and
+     anything looping is removed; opacity, colour and shadow still transition,
+     because those carry meaning and cause nobody any trouble. */
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+
+    /* no travel: things fade in place instead of sliding */
+    .reveal-on .rv{transform:none;transition:opacity 320ms var(--ease);}
+    .reveal-on .rv.in{transform:none;}
+    .fade{animation:fade-plain 260ms var(--ease) both;}
+
+    /* nothing loops forever */
+    .aurora b,.ticker .track,.loading .bar i{animation:none;}
+    .aurora{opacity:.3;}
+
+    /* motion that follows the pointer goes; opacity feedback stays */
+    .cursorglow{display:none;}
+    .holo{transition:none;transform:none !important;}
+    a.card,.panel,.scard,.rcard,
+    a.card:hover,.panel:hover,.scard:hover,.rcard:hover,.prose figure .framed:hover,.prose .mermaid:hover{
+      transform:none;}
+    .pill:active,.chip:active,.pager button:active,.tbtn:active,a.card:active{transform:none;}
+  }
+  @keyframes fade-plain{from{opacity:0;}to{opacity:1;}}
+
+  @media (max-width:900px){
+    .hero .grid{grid-template-columns:1fr;gap:44px;}
+    .hero .portrait-wrap{max-width:300px;}
+    .about-grid{grid-template-columns:1fr;gap:38px;}
+  }
+  @media (max-width:680px){
+    .band{padding:64px 0;}
+    .hero{padding:56px 0 60px;}
+    .nav .mid{display:none;}
+    .lead{padding-left:0;}
+    .prose{font-size:17px;}
+  }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="cursorglow" id="cursorGlow" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="nav">
+  <div class="row">
+    <a class="brand" href="#" data-home aria-label="Ankit Kumar Surana, home">
+      <span class="brand-mark" aria-hidden="true">AKS</span>
+      <span class="brand-name">Ankit Kumar Surana</span>
+    </a>
+    <div class="mid">
+      <a href="#work">Work</a><a href="#writing">Writing</a><a href="#about">About</a><a href="#skills">Skills</a>
+    </div>
+    <div class="end">
+      <a class="navlink" href="#contact">Get in touch</a>
+      <button class="tbtn" id="themeBtn" aria-label="Switch colour theme">◑</button>
+    </div>
+  </div>
+</nav>
+
+<div id="site">
+
+  <header class="hero" id="main">
+    <div class="aurora" aria-hidden="true"><b></b><b></b><b></b></div>
+    <div class="wrap">
+      <div class="grid">
+        <div>
+          <p class="eyebrow fade">Ankit Surana · AVP Data Engineer at NatWest</p>
+          <h1 class="fade">I build the pipes the numbers arrive through.</h1>
+          <p class="sub fade">Ten years of event-driven data platforms on AWS, now building agentic AI and
+            retrieval systems on top of them. I care about the whole path, from the data model up to
+            the button someone clicks.</p>
+          <div class="cta fade">
+            <a class="pill solid" href="#work">View work</a>
+            <a class="pill" href="https://github.com/AnkitSurana" target="_blank" rel="noopener">GitHub ↗</a>
+            <a class="pill" href="https://www.linkedin.com/in/ankitsurana002/" target="_blank" rel="noopener">LinkedIn ↗</a>
+          </div>
+        </div>
+        <div class="portrait-wrap fade">
+          <div class="portrait holo" data-holo>
+            <img src="assets/potrait.jpg" alt="Ankit Surana" width="1200" height="1600">
+            <span class="layer film"></span><span class="layer sheen"></span>
+            <span class="layer glare"></span><span class="layer edge"></span>
+          </div>
+          <div class="pmeta">
+            <span class="live"><span class="dot"></span>Open to roles</span>
+            <span>Bengaluru</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 01 WORK -->
+  <section class="band alt" id="work">
+    <div class="wrap">
+      <div class="shead rv"><span class="snum">01</span><h2>Work</h2></div>
+      <p class="lead rv">Each one has a write-up, so it stands on its own whether or not the source is
+        public. Open repos link out as well.</p>
+      <div class="toolbar rv" id="projectTools">
+        <label class="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+          <input type="search" id="projectSearch" placeholder="Search projects" aria-label="Search projects">
+          <kbd>/</kbd>
+        </label>
+        <div class="chips" id="projectChips"></div>
+        <span class="count" id="projectCount"></span>
+      </div>
+      <div class="grid" id="projectList"></div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="track" id="ticker"></div>
+  </div>
+
+  <!-- 02 WRITING -->
+  <section class="band" id="writing">
+    <div class="wrap">
+      <div class="shead rv"><span class="snum">02</span><h2>Field notes</h2></div>
+      <p class="lead rv">One real problem per post. What broke, why I did not see it coming, and what
+        fixed it.</p>
+      <div class="toolbar rv" id="postTools">
+        <label class="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+          <input type="search" id="postSearch" placeholder="Search field notes" aria-label="Search posts">
+          <kbd>/</kbd>
+        </label>
+        <div class="chips" id="postChips"></div>
+        <span class="count" id="postCount"></span>
+      </div>
+      <div class="grid" id="postList"></div>
+    </div>
+  </section>
+
+  <div class="ticker soft reverse" aria-hidden="true">
+    <div class="track" id="tickerNotes"></div>
+  </div>
+
+  <!-- 03 ABOUT -->
+  <section class="band alt" id="about">
+    <div class="wrap">
+      <div class="shead rv"><span class="snum">03</span><h2>About</h2></div>
+      <p class="statement rv">Ten years of making sure the numbers turn up on time.</p>
+      <div class="about-grid">
+        <div class="bio rv">
+          <p>I am <b>Ankit Surana</b>, an AVP and data engineer at <b>NatWest</b> in Bengaluru. Before
+            that I spent close to eight years at <b>Infosys</b>, three and a half of them based in
+            <b>Edinburgh</b>, ending as a technical lead. Most of my career has gone into event-driven
+            pipelines on AWS. Kafka, Lambda, Glue, Redshift, Athena. The platform I work on carries
+            north of
+            <button class="anno" type="button" data-note="Streaming pipelines feeding an analytics layer on AWS. Volume is the easy part. The hard part is that a late event is a wrong number on somebody's dashboard.">500 million transactions a day</button>
+            and has to answer
+            <button class="anno" type="button" data-note="The service level the work is held to: a customer asks a question about their own transactions and the answer comes back inside five seconds, end to end.">inside five seconds</button>.</p>
+
+          <p>Lately that has meant agents. I was on the team that shipped a personalised spending
+            assistant to customers, one of the first agentic AI features any bank put in front of the
+            public, alongside a retrieval pipeline that reads the documents nobody wants to read. I
+            hold an AWS Solutions Architect certificate and an MSc in AI and Machine Learning from
+            Liverpool John Moores.</p>
+
+          <p>What I keep returning to is ownership. I would rather understand a system from the data
+            model up to the button someone clicks than hold one slice of it very well. That is why I
+            build things on my own time, and why none of them are finished.</p>
+        </div>
+
+        <aside class="rail rv">
+          <div class="panel" data-holo data-tilt="9">
+            <p class="h"><span class="dot"></span>Now</p>
+            <dl class="nowlist">
+              <dt>Leading</dt><dd>An upgrade to a real-time data platform, and the analytics layer sitting on top of it</dd>
+              <dt>Shipped</dt><dd>A customer-facing agentic assistant for spending questions, now live in beta</dd>
+              <dt>Reading</dt><dd>Agent evaluation, and what a useful benchmark for these systems even looks like</dd>
+              <dt>On the side</dt><dd>Small products of my own, built in public on GitHub</dd>
+            </dl>
+            <p class="when">Updated July 2026</p>
+          </div>
+        </aside>
+      </div>
+
+      <!-- Each line names the result first, then how it was reached. -->
+      <div class="impact rv">
+        <p class="impact-h">What that added up to</p>
+        <ol>
+          <li><span class="fig">80%</span><span class="txt">less manual turnaround on insights covering
+            roughly 500 million daily transactions, after rebuilding the pipeline end to end in Apache
+            Airflow.</span></li>
+          <li><span class="fig">&lt;5s</span><span class="txt">to answer a customer's question about
+            their own transactions, by architecting agentic AI services across AWS, Azure AI and
+            PostgreSQL.</span></li>
+          <li><span class="fig">88%</span><span class="txt">accuracy classifying financial transactions,
+            reached by working out which predictive parameters carried signal and dropping the
+            rest.</span></li>
+          <li><span class="fig">40%</span><span class="txt">off code management processing time across
+            50+ repositories, by automating the move from Bitbucket to GitLab. That one earned a Risk
+            Hero Award.</span></li>
+          <li><span class="fig">30%</span><span class="txt">faster queries through the Teradata to
+            Redshift migration, because the reporting SQL was rewritten rather than lifted across
+            unchanged.</span></li>
+          <li><span class="fig">20%</span><span class="txt">more output from a team of ten analysts,
+            after mentoring them and changing how the work was split.</span></li>
+        </ol>
+      </div>
+
+      <div class="record rv">
+        <p class="record-h">On the record</p>
+        <div class="record-grid">
+          <div class="rcard" data-holo data-tilt="10"><span class="t">Risk Hero Award, NatWest<small>Automating code management</small></span><span class="yr">2024</span></div>
+          <div class="rcard" data-holo data-tilt="10"><span class="t">AWS Solutions Architect<small>Associate, and Cloud Practitioner</small></span><span class="yr">Current</span></div>
+          <div class="rcard" data-holo data-tilt="10"><span class="t">MSc, AI &amp; Machine Learning<small>Liverpool John Moores</small></span><span class="yr">Jul 2026</span></div>
+          <div class="rcard" data-holo data-tilt="10"><span class="t">Executive PG, AI &amp; ML<small>IIIT Bangalore</small></span><span class="yr">2025</span></div>
+          <div class="rcard" data-holo data-tilt="10"><span class="t">Google DeepMind Hackathon<small>Selected, 1 of 250 from 4,000+ applicants</small></span><span class="yr">2026</span></div>
+          <div class="rcard" data-holo data-tilt="10"><span class="t">Winner, LJMU group project<small>Cash In Loop. Concept to working POC in three days</small></span><span class="yr">2025</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker soft" aria-hidden="true">
+    <div class="track" id="tickerAbout"></div>
+  </div>
+
+  <!-- 04 SKILLS -->
+  <section class="band" id="skills">
+    <div class="wrap">
+      <div class="shead rv"><span class="snum">04</span><h2>Skills</h2></div>
+      <p class="lead rv">The tools I reach for without thinking about it.</p>
+      <div class="skillgrid">
+        <div class="scard rv" data-holo data-tilt="10"><p class="h">Languages</p><div class="items"><span>Python</span><span>SQL</span><span>JavaScript</span><span>Dart</span></div></div>
+        <div class="scard rv" data-holo data-tilt="10"><p class="h">Streaming &amp; big data</p><div class="items"><span>Kafka</span><span>Apache Spark</span><span>Airflow</span><span>Hadoop</span><span>Hive</span><span>Elasticsearch</span></div></div>
+        <div class="scard rv" data-holo data-tilt="10"><p class="h">AWS</p><div class="items"><span>Lambda</span><span>Glue</span><span>Redshift</span><span>Athena</span><span>Kinesis</span><span>S3</span><span>EMR</span><span>SageMaker</span><span>ECS</span></div></div>
+        <div class="scard rv" data-holo data-tilt="10"><p class="h">GenAI &amp; agents</p><div class="items"><span>RAG</span><span>LangChain</span><span>LangGraph</span><span>Agentic systems</span><span>MCP</span><span>Langfuse</span><span>LLMOps</span><span>OpenAI API</span><span>Gemini</span></div></div>
+        <div class="scard rv" data-holo data-tilt="10"><p class="h">Machine learning</p><div class="items"><span>scikit-learn</span><span>TensorFlow</span><span>PySpark</span><span>Anomaly detection</span><span>Forecasting</span><span>OpenCV</span></div></div>
+        <div class="scard rv" data-holo data-tilt="10"><p class="h">Data</p><div class="items"><span>Data modelling</span><span>Warehousing</span><span>ETL</span><span>PostgreSQL</span><span>MongoDB</span><span>Redis</span></div></div>
+        <div class="scard rv" data-holo data-tilt="10"><p class="h">Platform</p><div class="items"><span>Docker</span><span>Kubernetes</span><span>Terraform</span><span>GitLab CI</span><span>Jenkins</span></div></div>
+        <div class="scard rv" data-holo data-tilt="10"><p class="h">On-device &amp; backend</p><div class="items"><span>Flutter</span><span>TFLite</span><span>FastAPI</span><span>Django</span><span>Flask</span><span>REST</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="aurora" aria-hidden="true"><b></b><b></b><b></b></div>
+    <div class="wrap inner">
+      <h2 class="rv">Let us talk about the hard part.</h2>
+      <p class="rv">If you are hiring for something where owning the whole system is the job, or you
+        just want to argue with a post, I read everything.</p>
+      <div class="btns rv">
+        <button class="pill solid" type="button" data-email data-subject="Hello">Email me</button>
+        <a class="pill" href="https://www.linkedin.com/in/ankitsurana002/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="pill" href="https://github.com/AnkitSurana" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+      <p class="note rv">Usually replies within a day</p>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="row">
+      <div>
+        <p class="big">Open to senior engineering roles.</p>
+        <p class="sm">Data, ML, or forward-deployed. Bengaluru or remote.</p>
+      </div>
+      <p class="colophon">Built by hand. No framework, no build step.<br>
+        Posts and write-ups are markdown in the repo.</p>
+    </div>
+  </footer>
+</div>
+
+<!-- one view, used for both posts and project write-ups -->
+<article id="doc-view">
+  <div class="docbar">
+    <div class="docwrap crumbs">
+      <a class="backlink" href="#" data-home><span aria-hidden="true">&larr;</span> Back</a>
+      <nav class="trail" aria-label="Breadcrumb">
+        <a id="crumbSection" href="#writing">Field notes</a>
+        <span aria-hidden="true">/</span>
+        <span id="crumbTitle" class="here"></span>
+      </nav>
+    </div>
+  </div>
+  <div id="docHero"></div>
+  <div class="reading art">
+    <div id="docHead"></div>
+    <div id="docBody"></div>
+    <div class="comments" id="comments"></div>
+    <div class="art-foot">
+      <a class="backlink" href="#" data-home><span aria-hidden="true">&larr;</span> Back</a>
+      <button class="pill" type="button" id="askBtn" data-email data-subject="About your work">Ask me about it</button>
+    </div>
+  </div>
+</article>
+
+<script>
+(function(){
+  "use strict";
+
+  var root = document.documentElement, body = document.body;
+  var reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var fine = matchMedia("(hover:hover) and (pointer:fine)").matches;
+  var TITLE = "Ankit Surana — Data & AI Engineer";
+
+  /* Comments and reactions, via giscus, which stores them in GitHub Discussions
+     on your own repo. A static site has no backend, so this is the honest way to
+     get both: real data, owned by you, no third-party database.
+
+     To switch it on: enable Discussions on the repo, install the giscus app at
+     https://github.com/apps/giscus, then read your ids off https://giscus.app
+     and paste them below. Until then the page says so rather than pretending. */
+  var GISCUS = {
+    /* Left blank, the repo is worked out from the host: on
+       ankitsurana.github.io that resolves to AnkitSurana/AnkitSurana.github.io.
+       The two ids below are the only things that cannot be derived, because
+       GitHub generates them. Get both from https://giscus.app by entering the
+       repo, then paste them here. */
+    repo:       "",          // required on a custom domain: "AnkitSurana/<repo>"
+    repoId:     "",
+    category:   "Announcements",
+    categoryId: "",
+    reactions:  true
+  };
+
+  function giscusRepo(){
+    if (GISCUS.repo) return GISCUS.repo;
+    /* Only derivable on a github.io host. Served from ankitsurana.dev there is
+       nothing in the hostname to derive it from, so GISCUS.repo must be set. */
+    var h = location.hostname;
+    if (/\.github\.io$/.test(h)) {
+      var owner = h.replace(/\.github\.io$/, "");
+      var seg = location.pathname.split("/").filter(Boolean)[0];
+      /* user site: owner/owner.github.io. project site: owner/<first path segment> */
+      return owner + "/" + (seg && !/\.html?$/.test(seg) ? seg : h);
+    }
+    return "";
+  }
+  var isFile = location.protocol === "file:";
+
+  /* ───────────── email ─────────────
+     The address is assembled at runtime and never appears in the served
+     HTML, so the usual address harvesters find nothing. Clicking opens the
+     mail client; if none is configured nothing visibly happens, which is a
+     dead end, so the address is also copied and shown. */
+  var MAIL = ["ankitsurana002", "gmail", "com"];
+  function address(){ return MAIL[0] + String.fromCharCode(64) + MAIL[1] + "." + MAIL[2]; }
+
+  function toast(msg){
+    var t = document.getElementById("toast");
+    if (!t) { t = document.createElement("div"); t.id = "toast"; document.body.appendChild(t); }
+    t.textContent = msg;
+    t.classList.add("show");
+    clearTimeout(t._h);
+    t._h = setTimeout(function(){ t.classList.remove("show"); }, 3200);
+  }
+
+  document.addEventListener("click", function(e){
+    var btn = e.target.closest && e.target.closest("[data-email]");
+    if (!btn) return;
+    e.preventDefault();
+    var addr = address();
+    var subject = btn.dataset.subject || "Hello";
+    var copied = false;
+    try {
+      if (navigator.clipboard) { navigator.clipboard.writeText(addr); copied = true; }
+    } catch(err){}
+    toast(copied
+      ? "Email address copied. Opening your mail app now."
+      : "Opening your mail app.");
+    window.location.href = "mailto:" + addr + "?subject=" + encodeURIComponent(subject);
+  });
+
+  /* ───────────── theme ───────────── */
+  try { var t = localStorage.getItem("theme"); if (t) root.setAttribute("data-theme", t); } catch(e){}
+  document.getElementById("themeBtn").addEventListener("click", function(){
+    var cur = root.getAttribute("data-theme");
+    if (!cur) cur = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch(e){}
+    /* mermaid bakes its colours into the rendered SVG, so it has to be redrawn */
+    var host = document.getElementById("docBody");
+    if (host && host.querySelector(".mermaid")) {
+      mermaidState = 0;
+      host.querySelectorAll(".mermaid").forEach(function(n){
+        if (n.dataset.src) { n.removeAttribute("data-processed"); n.innerHTML = n.dataset.src; }
+      });
+      renderMermaid(host);
+    }
+  });
+
+  /* ───────────── generated cover art ─────────────
+     Deterministic from the slug, so a card looks the same on every
+     load and nothing is ever a broken image. */
+  function hash(s){ var h=2166136261; for(var i=0;i<s.length;i++){ h^=s.charCodeAt(i); h=Math.imul(h,16777619);} return h>>>0; }
+  function paintMesh(canvas, seed){
+    var ctx = canvas.getContext("2d"); if(!ctx) return;
+    var w = canvas.width, h = canvas.height, r = hash(seed), n;
+    function rnd(){ r ^= r<<13; r ^= r>>>17; r ^= r<<5; r>>>=0; return r/4294967296; }
+    var hue = Math.floor(rnd()*360);
+    ctx.fillStyle = "hsl(" + hue + ",32%,9%)";
+    ctx.fillRect(0,0,w,h);
+    for (n=0; n<5; n++){
+      var g = ctx.createRadialGradient(rnd()*w, rnd()*h, 0, rnd()*w, rnd()*h, w*(0.4+rnd()*0.5));
+      g.addColorStop(0, "hsla(" + ((hue + n*42) % 360) + ",66%,56%,.45)");
+      g.addColorStop(1, "hsla(" + ((hue + n*42) % 360) + ",66%,42%,0)");
+      ctx.fillStyle = g; ctx.fillRect(0,0,w,h);
+    }
+    ctx.globalAlpha = .09; ctx.strokeStyle = "#fff"; ctx.lineWidth = 1;
+    for (n=0; n<20; n++){
+      ctx.beginPath(); var y = rnd()*h;
+      ctx.moveTo(0,y); ctx.bezierCurveTo(w*.3, y+(rnd()-.5)*h*.4, w*.7, y+(rnd()-.5)*h*.4, w, y);
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+  }
+  function initMeshes(scope){
+    (scope||document).querySelectorAll("canvas.mesh").forEach(function(c){
+      if (c.dataset.painted) return;
+      paintMesh(c, c.dataset.seed || "x");
+      c.dataset.painted = "1";
+    });
+  }
+
+  /* ───────────── holographic foil ─────────────
+     Hover-only. Nothing moves while the page is at rest. */
+  function initHolo(scope){
+    if (!fine || reduced) return;
+
+    /* Glare position only. Used on a cover that sits inside something already
+       tilting, so it never applies a transform of its own. */
+    (scope||document).querySelectorAll("[data-holo-flat]").forEach(function(el){
+      if (el.dataset.holoBound) return;
+      el.dataset.holoBound = "1";
+      el.addEventListener("pointermove", function(e){
+        var b = el.getBoundingClientRect();
+        el.style.setProperty("--mx", ((e.clientX - b.left) / b.width * 100) + "%");
+        el.style.setProperty("--my", ((e.clientY - b.top) / b.height * 100) + "%");
+      }, {passive:true});
+    });
+
+    /* Tilt is published as --rx / --ry rather than written straight into
+       style.transform. Writing the transform inline wins over CSS, which would
+       wipe out the hover lift a card also wants; as variables, each component
+       composes its own transform and gets both. */
+    (scope||document).querySelectorAll("[data-holo]").forEach(function(el){
+      if (el.dataset.holoBound) return;
+      el.dataset.holoBound = "1";
+      var max = parseFloat(el.dataset.tilt) || 7;
+
+      el.addEventListener("pointermove", function(e){
+        var b = el.getBoundingClientRect();
+        var px = (e.clientX - b.left) / b.width, py = (e.clientY - b.top) / b.height;
+        el.classList.add("is-tilting");
+        el.style.setProperty("--ry", ((px - .5) * max) + "deg");
+        el.style.setProperty("--rx", ((.5 - py) * max) + "deg");
+        el.style.setProperty("--mx", (px * 100) + "%");
+        el.style.setProperty("--my", (py * 100) + "%");
+      }, {passive:true});
+
+      el.addEventListener("pointerleave", function(){
+        el.classList.remove("is-tilting");   /* let it settle on the slow curve */
+        el.style.setProperty("--rx", "0deg");
+        el.style.setProperty("--ry", "0deg");
+      });
+    });
+  }
+
+
+  /* ───────────── markdown ─────────────
+     Small renderer so posts and project write-ups are authored as .md
+     files. Raw HTML passes through on purpose: it is my own repo, the
+     same trust model Jekyll uses. */
+  function esc(s){ return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+  /* Printable sentinels. An earlier version used NUL bytes here, which
+     worked in the browser but made the file binary to git and grep. */
+  var CODE_OPEN = "⸤", CODE_SHUT = "⸥";
+
+  function inline(s){
+    var codes = [];
+    s = s.replace(/`([^`]+)`/g, function(m, c){ codes.push(c); return CODE_OPEN + (codes.length-1) + CODE_SHUT; });
+    s = s.replace(/!\[([^\]]*)\]\(([^)\s]+)\)/g, function(m, alt, src){
+      return '<img src="' + src + '" alt="' + alt.replace(/"/g,"&quot;") + '">';
+    });
+    s = s.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, function(m, txt, href){
+      var ext = /^https?:/.test(href);
+      return '<a href="' + href + '"' + (ext ? ' target="_blank" rel="noopener"' : '') + '>' + txt + '</a>';
+    });
+    s = s.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+    s = s.replace(/(^|[\s(])\*([^*\n]+)\*/g, "$1<em>$2</em>");
+    s = s.replace(/(^|[\s(])_([^_\n]+)_/g, "$1<em>$2</em>");
+    s = s.replace(new RegExp(CODE_OPEN + "(\\d+)" + CODE_SHUT, "g"), function(m, i){
+      return "<code>" + esc(codes[+i]) + "</code>";
+    });
+    return s;
+  }
+
+  function renderTable(lines){
+    var rows = lines.map(function(l){
+      return l.replace(/^\||\|$/g, "").split("|").map(function(c){ return c.trim(); });
+    });
+    var out = '<div class="tablewrap"><table><thead><tr>';
+    rows[0].forEach(function(c){ out += "<th>" + inline(c) + "</th>"; });
+    out += "</tr></thead><tbody>";
+    rows.slice(2).forEach(function(r){
+      out += "<tr>";
+      r.forEach(function(c){ out += "<td>" + inline(c) + "</td>"; });
+      out += "</tr>";
+    });
+    return out + "</tbody></table></div>";
+  }
+
+  function markdown(src){
+    src = src.replace(/\r\n?/g, "\n");
+
+    var fences = [];
+    src = src.replace(/```(\w*)\n([\s\S]*?)```/g, function(m, lang, code){
+      fences.push({lang: lang, code: code});
+      return "\n\n" + CODE_OPEN + "F" + (fences.length-1) + CODE_SHUT + "\n\n";
+    });
+
+    var fenceRe = new RegExp("^" + CODE_OPEN + "F(\\d+)" + CODE_SHUT + "$");
+    var blocks = src.split(/\n{2,}/), html = [];
+
+    blocks.forEach(function(b){
+      b = b.replace(/^\n+|\n+$/g, "");
+      if (!b) return;
+
+      var f = b.match(fenceRe);
+      if (f) {
+        var fence = fences[+f[1]];
+        if (fence.lang === "mermaid") {
+          var src = esc(fence.code);
+          html.push('<pre class="mermaid" data-src="' + src.replace(/"/g, "&quot;") + '">' + src + "</pre>");
+        }
+        else html.push("<pre><code>" + esc(fence.code.replace(/\n$/,"")) + "</code></pre>");
+        return;
+      }
+      if (/^#{1,4}\s/.test(b)) {
+        var lv = b.match(/^#+/)[0].length;
+        html.push("<h" + lv + ">" + inline(b.replace(/^#+\s*/, "")) + "</h" + lv + ">");
+        return;
+      }
+      if (/^(-{3,}|\*{3,})$/.test(b)) { html.push("<hr>"); return; }
+      if (/^>\s?/.test(b)) {
+        html.push("<blockquote><p>" + inline(b.split("\n").map(function(l){ return l.replace(/^>\s?/, ""); }).join(" ")) + "</p></blockquote>");
+        return;
+      }
+      var lines = b.split("\n");
+      if (lines.length > 1 && /^\|/.test(lines[0]) && /^\|[\s:|-]+\|?$/.test(lines[1])) {
+        html.push(renderTable(lines)); return;
+      }
+      if (/^[-*]\s/.test(b)) {
+        html.push("<ul>" + lines.map(function(l){ return "<li>" + inline(l.replace(/^[-*]\s+/, "")) + "</li>"; }).join("") + "</ul>");
+        return;
+      }
+      if (/^\d+\.\s/.test(b)) {
+        html.push("<ol>" + lines.map(function(l){ return "<li>" + inline(l.replace(/^\d+\.\s+/, "")) + "</li>"; }).join("") + "</ol>");
+        return;
+      }
+      var img = b.match(/^!\[([^\]]*)\]\(([^)\s]+)\)$/);
+      if (img) {
+        html.push('<figure><span class="framed"><img src="' + img[2] + '" alt="' +
+                  img[1].replace(/"/g,"&quot;") + '"></span>' +
+                  (img[1] ? "<figcaption>" + inline(img[1]) + "</figcaption>" : "") + "</figure>");
+        return;
+      }
+      if (/^</.test(b)) { html.push(b); return; }
+      html.push("<p>" + inline(b.replace(/\n/g, " ")) + "</p>");
+    });
+
+    return html.join("\n");
+  }
+
+  /* Images are written relative to the .md file, README-style, so they
+     have to be re-based against the folder the markdown came from. */
+  function fixMedia(scope, dir){
+    var base = new URL(dir, location.href);
+    scope.querySelectorAll("img").forEach(function(img, i){
+      var raw = img.getAttribute("src") || "";
+      if (!/^(https?:|data:|\/)/.test(raw)) {
+        try { img.src = new URL(raw, base).href; } catch(e){}
+      }
+      img.setAttribute("loading", i < 2 ? "eager" : "lazy");
+      img.setAttribute("decoding", "async");
+      function fail(){
+        if (!img.parentNode) return;
+        var d = document.createElement("div");
+        d.className = "missing";
+        d.textContent = raw + " not found";
+        img.parentNode.replaceChild(d, img);
+      }
+      img.addEventListener("error", fail, {once:true});
+      if (img.complete && img.naturalWidth === 0) fail();
+
+      /* A diagram loaded through <img> is its own document and cannot see the
+         page's CSS variables, so it would keep following the operating system
+         theme while the reader has toggled the site the other way. Inlining
+         same-origin SVGs puts them under the page's stylesheet. */
+      if (/\.svg($|\?)/i.test(img.src) && img.src.indexOf(location.origin) === 0) {
+        /* revalidate: regenerating a diagram should show up on reload rather
+           than serving whatever the browser cached earlier */
+        fetch(img.src, {cache:"no-cache"}).then(function(r){ return r.ok ? r.text() : null; }).then(function(txt){
+          if (!txt || !img.parentNode) return;
+          var doc = new DOMParser().parseFromString(txt, "image/svg+xml");
+          var svg = doc.querySelector("svg");
+          if (!svg || doc.querySelector("parsererror")) return;
+          svg.removeAttribute("width");
+          svg.removeAttribute("height");
+          svg.setAttribute("class", "figure-svg");
+          svg.setAttribute("role", "img");
+          if (img.alt) svg.setAttribute("aria-label", img.alt);
+          img.parentNode.replaceChild(svg, img);
+        }).catch(function(){});
+      }
+    });
+  }
+
+  var mermaidState = 0;
+  function renderMermaid(scope){
+    if (!scope.querySelector(".mermaid")) return;
+    if (mermaidState === 2) { try { window.mermaid.run({nodes: scope.querySelectorAll(".mermaid")}); } catch(e){} return; }
+    if (mermaidState === 1) return;
+    mermaidState = 1;
+    var s = document.createElement("script");
+    s.type = "module";
+    /* mermaid's stock themes clash with the page in light mode, so the palette
+       is handed to it explicitly from the same variables everything else uses */
+    var cs = getComputedStyle(document.documentElement);
+    function v(n, f){ var x = cs.getPropertyValue(n).trim(); return x || f; }
+    var mv = {
+      background:    v("--diagram-bg", "#0d1117"),
+      primaryColor:  v("--diagram-panel2", "#1c2128"),
+      primaryTextColor: v("--diagram-ink", "#e6edf3"),
+      primaryBorderColor: v("--diagram-line", "#30363d"),
+      lineColor:     v("--diagram-ink3", "#6e7681"),
+      secondaryColor: v("--diagram-panel", "#161b22"),
+      tertiaryColor: v("--diagram-panel", "#161b22"),
+      mainBkg:       v("--diagram-panel2", "#1c2128"),
+      nodeBorder:    v("--diagram-line", "#30363d"),
+      clusterBkg:    v("--diagram-panel", "#161b22"),
+      clusterBorder: v("--diagram-line", "#30363d"),
+      titleColor:    v("--diagram-ink", "#e6edf3"),
+      edgeLabelBackground: v("--diagram-bg", "#0d1117"),
+      textColor:     v("--diagram-ink2", "#8b949e"),
+      actorBkg:      v("--diagram-panel2", "#1c2128"),
+      actorBorder:   v("--diagram-line", "#30363d"),
+      actorTextColor: v("--diagram-ink", "#e6edf3"),
+      signalColor:   v("--diagram-ink2", "#8b949e"),
+      signalTextColor: v("--diagram-ink", "#e6edf3"),
+      labelBoxBkg:   v("--diagram-panel2", "#1c2128"),
+      labelBoxBorderColor: v("--diagram-line", "#30363d"),
+      labelTextColor: v("--diagram-ink", "#e6edf3"),
+      noteBkgColor:  v("--diagram-panel", "#161b22"),
+      noteBorderColor: v("--diagram-line", "#30363d"),
+      noteTextColor: v("--diagram-ink", "#e6edf3")
+    };
+    s.textContent =
+      "import m from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';" +
+      "window.mermaid=m;" +
+      "m.initialize({startOnLoad:false,theme:'base',themeVariables:" + JSON.stringify(mv) + "," +
+      "flowchart:{htmlLabels:false,useMaxWidth:true,nodeSpacing:44,rankSpacing:52,padding:14}," +
+      "sequence:{useMaxWidth:true,wrap:true}," +
+      "fontFamily:'ui-monospace, SFMono-Regular, Menlo, monospace',fontSize:14});" +
+      "m.run({nodes:document.querySelectorAll('.mermaid')});" +
+      "window.dispatchEvent(new Event('mermaid-ready'));";
+    s.onerror = function(){ mermaidState = 0; };
+    document.head.appendChild(s);
+    window.addEventListener("mermaid-ready", function(){ mermaidState = 2; }, {once:true});
+  }
+
+  /* ───────────── content loading ───────────── */
+  var MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  function prettyDate(iso){
+    var d = new Date(iso + "T00:00:00");
+    if (isNaN(d)) return iso;
+    return d.getDate() + " " + MONTHS[d.getMonth()] + " " + d.getFullYear();
+  }
+  function readingTime(md){ return Math.max(1, Math.round(md.trim().split(/\s+/).length / 220)); }
+
+  var manifests = {}, docCache = {};
+  function loadManifest(kind){
+    if (manifests[kind]) return Promise.resolve(manifests[kind]);
+    return fetch(kind + "/" + kind + ".json", {cache:"no-cache"})
+      .then(function(r){ if(!r.ok) throw new Error(kind + "/" + kind + ".json returned HTTP " + r.status); return r.json(); })
+      .then(function(j){ manifests[kind] = j; return j; });
+  }
+
+  /* One honest explanation, rather than an empty section. The most
+     common cause by far is opening the file directly. */
+  function explain(err){
+    if (isFile) {
+      return '<div class="err"><h3>Content cannot load from a file:// URL</h3>' +
+        "<p>Posts and projects are markdown files, loaded with <code>fetch</code>, and browsers " +
+        "block <code>fetch</code> when a page is opened directly from disk. Nothing is broken. " +
+        "Serve the folder over HTTP and it all appears:</p>" +
+        "<pre>cd " + "portfolio\npython3 -m http.server 8000</pre>" +
+        "<p>Then open <code>http://localhost:8000</code>. " +
+        "Double-clicking <code>serve.command</code> in this folder does the same thing. " +
+        "On GitHub Pages this never applies.</p></div>";
+    }
+    return '<div class="err"><h3>That content did not load</h3><p><code>' + String(err.message) +
+      "</code></p><p>Check that the file exists and that its entry in the manifest matches the " +
+      "filename.</p></div>";
+  }
+
+  /* Each post and project owns a folder, so its assets are namespaced.
+     Two posts can both have a cover.svg without colliding. Paths in the
+     manifest and in the markdown are relative to that folder. */
+  function itemDir(kind, slug){ return kind + "/" + slug + "/"; }
+
+  /* make-covers.py stamps every item with an "art" version, appended here so a
+     regenerated cover is never masked by the browser's cached copy */
+  function artv(item){ return item.art ? "?v=" + item.art : ""; }
+
+  function cover(item, kind, i){
+    var dir = itemDir(kind, item.slug);
+    /* the first row is above the fold on most screens, so those load
+       eagerly. deferring them only delays the largest paint. */
+    var mode = i < 3 ? "eager" : "lazy";
+    return '<div class="card-cover holo" data-holo-flat>' +
+      (item.cover ? '<img src="' + dir + item.cover + artv(item) + '" alt="" loading="' + mode + '" decoding="async">'
+                  : '<canvas class="mesh" width="640" height="360" data-seed="' + item.slug + '" aria-hidden="true"></canvas>') +
+      '<span class="layer film"></span><span class="layer sheen"></span>' +
+      '<span class="layer glare"></span><span class="layer edge"></span></div>';
+  }
+
+  /* "display": "hide" in the manifest pulls an item off the grids. It stays
+     reachable by direct link so a draft can be previewed and shared, and the
+     page marks it as unlisted rather than pretending it is published. */
+  function isHidden(item){ return String(item.display || "show").toLowerCase() === "hide"; }
+  function listed(items){ return items.filter(function(i){ return !isHidden(i); }); }
+
+  /* Grids stay readable as content grows: only the first PAGE_SIZE items
+     render, the rest come in on demand. Card text is clamped in CSS, so a
+     long title cannot push one card taller than its neighbours. */
+  var PAGE_SIZE = 6;
+
+  /* Numbered pagination. Long lists get a windowed pager (1 … 4 5 6 … 12)
+     so the control stays the same width whether there are two pages or
+     twenty. Hidden entirely when everything fits on one page. */
+  function paginate(host, items, build, page, onPage){
+    var pages = Math.max(1, Math.ceil(items.length / PAGE_SIZE));
+    page = Math.min(Math.max(1, page || 1), pages);
+    var slice = items.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+
+    host.innerHTML = slice.map(build).join("");
+    var cards = [].slice.call(host.children);
+
+    /* one pager per grid, kept immediately after it in the DOM */
+    var existing = host.parentNode.querySelector(":scope > .pager");
+    if (existing) existing.remove();
+
+    {
+      var nums = [], i;
+      for (i = 1; i <= pages; i++) {
+        if (i === 1 || i === pages || Math.abs(i - page) <= 1) nums.push(i);
+        else if (nums[nums.length - 1] !== "gap") nums.push("gap");
+      }
+      var pager = document.createElement("div");
+      pager.className = "pager";
+      pager.innerHTML =
+        '<button type="button" data-go="' + (page - 1) + '"' + (page === 1 ? " disabled" : "") +
+          ' aria-label="Previous page">&larr;</button>' +
+        nums.map(function(n){
+          return n === "gap" ? '<span class="gap">&hellip;</span>'
+            : '<button type="button" data-go="' + n + '"' +
+              (n === page ? ' aria-current="true"' : "") + ">" + n + "</button>";
+        }).join("") +
+        '<button type="button" data-go="' + (page + 1) + '"' + (page === pages ? " disabled" : "") +
+          ' aria-label="Next page">&rarr;</button>';
+      host.parentNode.insertBefore(pager, host.nextSibling);
+      pager.addEventListener("click", function(e){
+        var b = e.target.closest("button[data-go]");
+        if (!b || b.disabled) return;
+        if (+b.dataset.go === page) return;
+        onPage(+b.dataset.go);
+        /* keep the section header in view rather than jumping to the top */
+        var band = host.closest(".band");
+        if (band) window.scrollTo({top: band.offsetTop - 40, behavior: reduced ? "auto" : "smooth"});
+      });
+    }
+
+    initMeshes(host); initHolo(host); observe(cards);
+  }
+
+  function setupSection(cfg){
+    var host  = document.getElementById(cfg.list);
+    var input = document.getElementById(cfg.search);
+    var chips = document.getElementById(cfg.chips);
+    var count = document.getElementById(cfg.count);
+    var state = {items: [], query: "", tags: [], page: 1};
+
+    function tagsOf(item){ return cfg.tagsOf(item) || []; }
+
+    function matches(item){
+      if (state.tags.length) {
+        var has = tagsOf(item).map(function(t){ return t.toLowerCase(); });
+        var all = state.tags.every(function(t){ return has.indexOf(t.toLowerCase()) > -1; });
+        if (!all) return false;
+      }
+      if (!state.query) return true;
+      var hay = [cfg.titleOf(item), cfg.blurbOf(item)].concat(tagsOf(item)).join(" ").toLowerCase();
+      return state.query.split(/\s+/).every(function(w){ return hay.indexOf(w) > -1; });
+    }
+
+    function draw(){
+      var shown = state.items.filter(matches);
+      var pageCount = Math.max(1, Math.ceil(shown.length / PAGE_SIZE));
+      count.textContent =
+        (shown.length === state.items.length ? state.items.length + " total"
+                                             : shown.length + " of " + state.items.length) +
+        (pageCount > 1 ? "  ·  page " + Math.min(state.page, pageCount) + "/" + pageCount : "");
+
+      var pages = Math.max(1, Math.ceil(shown.length / PAGE_SIZE));
+      if (state.page > pages) state.page = pages;
+
+      if (!shown.length) {
+        host.innerHTML = '<div class="empty">Nothing matches that.<br>' +
+                         '<button class="pill" type="button" data-clear>Clear filters</button></div>';
+        host.querySelector("[data-clear]").addEventListener("click", function(){
+          state.query = ""; state.tags = []; state.page = 1; input.value = "";
+          chips.querySelectorAll(".chip").forEach(function(c){ c.setAttribute("aria-pressed","false"); });
+          draw();
+        });
+        return;
+      }
+      paginate(host, shown, cfg.card, state.page, function(n){ state.page = n; draw(); });
+    }
+
+    function buildChips(){
+      var freq = {};
+      state.items.forEach(function(it){
+        tagsOf(it).forEach(function(t){ freq[t] = (freq[t] || 0) + 1; });
+      });
+      /* most common first, capped so the row does not become a wall of chips */
+      var top = Object.keys(freq).sort(function(a,b){ return freq[b] - freq[a] || a.localeCompare(b); }).slice(0, 8);
+      chips.innerHTML = top.map(function(t){
+        return '<button class="chip" type="button" aria-pressed="false" data-tag="' + t + '">' + t + "</button>";
+      }).join("");
+      chips.querySelectorAll(".chip").forEach(function(btn){
+        btn.addEventListener("click", function(){
+          var t = btn.dataset.tag, on = btn.getAttribute("aria-pressed") === "true";
+          btn.setAttribute("aria-pressed", on ? "false" : "true");
+          if (on) state.tags = state.tags.filter(function(x){ return x !== t; });
+          else state.tags.push(t);
+          state.page = 1;
+          draw();
+        });
+      });
+    }
+
+    var debounce;
+    input.addEventListener("input", function(){
+      clearTimeout(debounce);
+      debounce = setTimeout(function(){
+        state.query = input.value.trim().toLowerCase(); state.page = 1; draw();
+      }, 120);
+    });
+
+    loadManifest(cfg.kind).then(function(all){
+      state.items = listed(all);
+      buildChips();
+      draw();
+    }).catch(function(err){
+      host.innerHTML = explain(err);
+      document.getElementById(cfg.tools).style.display = "none";
+    });
+  }
+
+  function renderProjects(){
+    setupSection({
+      kind:"projects", list:"projectList", search:"projectSearch", chips:"projectChips",
+      count:"projectCount", tools:"projectTools",
+      tagsOf:function(p){ return p.stack; },
+      titleOf:function(p){ return p.name; },
+      blurbOf:function(p){ return p.blurb; },
+      card:function(p, i){
+        var isPublic = !!p.repo;
+        return '<a class="card rv" href="#project/' + p.slug + '" data-holo data-tilt="9">' +
+          cover(p, "projects", i) +
+          '<div class="card-body">' +
+            '<p class="lbl">' + p.status +
+              '<span class="badge' + (isPublic ? " pub" : "") + '">' +
+              (isPublic ? "public repo" : "private source") + "</span></p>" +
+            "<h3>" + p.name + "</h3>" +
+            "<p>" + p.blurb + "</p>" +
+            '<div class="stack">' + p.stack.map(function(t){ return "<span>" + t + "</span>"; }).join("") + "</div>" +
+            '<span class="go">Read the write-up <span aria-hidden="true">&rarr;</span></span>' +
+          "</div></a>";
+      }
+    });
+  }
+
+  function renderPosts(){
+    setupSection({
+      kind:"posts", list:"postList", search:"postSearch", chips:"postChips",
+      count:"postCount", tools:"postTools",
+      tagsOf:function(p){ return p.tags; },
+      titleOf:function(p){ return p.title; },
+      blurbOf:function(p){ return p.summary; },
+      card:function(p, i){
+        return '<a class="card pcard rv" href="#post/' + p.slug + '" data-holo data-tilt="9">' +
+          cover(p, "posts", i) +
+          '<div class="card-body">' +
+            '<div class="tags">' + p.tags.map(function(t){ return "<span>" + t + "</span>"; }).join("") + "</div>" +
+            "<h3>" + p.title + "</h3>" +
+            "<p>" + p.summary + "</p>" +
+            '<p class="m">' + prettyDate(p.date) + "</p>" +
+          "</div></a>";
+      }
+    });
+  }
+
+  function loadDoc(kind, slug){
+    var head = document.getElementById("docHead"), bodyEl = document.getElementById("docBody");
+    var hero = document.getElementById("docHero");
+    hero.innerHTML = "";
+    var manifestKind = kind === "post" ? "posts" : "projects";
+    var dir = itemDir(manifestKind, slug);
+    head.innerHTML = "";
+    bodyEl.innerHTML = '<div class="loading"><div class="bar"><i></i></div>Loading ' + dir + "index.md</div>";
+
+    loadManifest(manifestKind).then(function(items){
+      var meta = items.filter(function(p){ return p.slug === slug; })[0];
+      if (!meta) throw new Error("No '" + slug + "' listed in " + manifestKind + ".json");
+      var key = kind + ":" + slug;
+      if (docCache[key]) return {meta: meta, md: docCache[key]};
+      return fetch(dir + "index.md", {cache:"no-cache"}).then(function(r){
+        if (!r.ok) throw new Error(dir + "index.md returned HTTP " + r.status);
+        return r.text();
+      }).then(function(md){ docCache[key] = md; return {meta: meta, md: md}; });
+    }).then(function(d){
+      var m = d.meta, title = m.title || m.name, h = "";
+
+      if (isHidden(m)) {
+        h += '<p class="unlisted">Unlisted &middot; set <code>"display": "show"</code> in ' +
+             manifestKind + '.json to publish it</p>';
+      }
+
+      /* The header art already carries the title, subtitle and date, so the
+         text versions would only repeat it. The h1 stays in the DOM but
+         visually hidden: search engines and screen readers still need it,
+         because text baked into an image is invisible to both. */
+      /* The banner is artwork plus real HTML text. Baking the title into the
+         SVG meant it had to be stretched to a fixed width; as live text it
+         simply reflows with the viewport. */
+      var kicker = kind === "post"
+        ? m.tags.map(function(t){ return "<span>" + t + "</span>"; }).join("")
+        : "<span>" + m.status + "</span><span>" + m.period + "</span>";
+      var sub = m.summary || m.blurb;
+      var stamp = kind === "post"
+        ? prettyDate(m.date) + " &middot; " + readingTime(d.md) + " min read"
+        : "";
+
+      hero.innerHTML =
+        '<div class="doc-hero">' +
+          '<img class="doc-hero-art" src="' + dir + m.header + artv(m) + '" alt="" aria-hidden="true">' +
+          '<div class="doc-hero-inner">' +
+            '<p class="kicker">' + kicker + "</p>" +
+            "<h1>" + title + "</h1>" +
+            (sub ? '<p class="standfirst">' + sub + "</p>" : "") +
+            (stamp ? '<p class="stamp">' + stamp + "</p>" : "") +
+          "</div>" +
+        "</div>";
+
+      if (kind !== "post") {
+        h += '<div class="actions">' +
+               (m.repo ? '<a class="pill solid" href="' + m.repo + '" target="_blank" rel="noopener">View repo &#8599;</a>'
+                       : '<span class="pill" style="cursor:default;color:var(--ink-3);">Source is private</span>') +
+             "</div>";
+      }
+      head.innerHTML = h;
+
+      var chips = kind === "post" ? (m.tags || []) : (m.stack || []);
+      var chipRow = chips.length
+        ? '<div class="tagfoot"><p class="h">' + (kind === "post" ? "Filed under" : "Built with") + "</p>" +
+          '<div class="stack">' + chips.map(function(t){ return "<span>" + t + "</span>"; }).join("") + "</div></div>"
+        : "";
+      bodyEl.innerHTML = '<div class="prose">' + markdown(d.md) + "</div>" + chipRow;
+      document.title = (m.title || m.name) + " — Ankit Surana";
+      var cs = document.getElementById("crumbSection"), ct = document.getElementById("crumbTitle");
+      cs.textContent = kind === "post" ? "Field notes" : "Work";
+      cs.setAttribute("href", kind === "post" ? "#writing" : "#work");
+      ct.textContent = title;
+      fixMedia(head, dir);
+      fixMedia(bodyEl, dir);
+      renderMermaid(bodyEl);
+      renderComments(kind, slug);
+      var h1 = head.querySelector("h1");
+      if (h1) { h1.setAttribute("tabindex", "-1"); h1.focus({preventScroll:true}); }
+    }).catch(function(err){
+      head.innerHTML = "";
+      hero.innerHTML = "";
+      bodyEl.innerHTML = explain(err);
+    });
+  }
+
+  function renderComments(kind, slug){
+    var host = document.getElementById("comments");
+    host.innerHTML = "";
+
+    var repo = giscusRepo();
+    if (!repo || !GISCUS.repoId || !GISCUS.categoryId) {
+      var link = "https://giscus.app/" + (repo ? "?repo=" + encodeURIComponent(repo) : "");
+      host.innerHTML = "<h2>Comments</h2><div class=\"comments-off\">" +
+        "<p><strong>Two values away from live.</strong> Comments and reactions run on GitHub " +
+        "Discussions" + (repo ? " for <code>" + repo + "</code>" : "") + ".</p>" +
+        "<ol>" +
+        "<li>Turn on <em>Discussions</em> in the repository settings.</li>" +
+        "<li>Install the <a href=\"https://github.com/apps/giscus\" target=\"_blank\" rel=\"noopener\">giscus app</a> for it.</li>" +
+        "<li>Open <a href=\"" + link + "\" target=\"_blank\" rel=\"noopener\">giscus.app</a>, then copy " +
+        "<code>repoId</code> and <code>categoryId</code> into the <code>GISCUS</code> block in " +
+        "<code>index.html</code>.</li>" +
+        "</ol>" +
+        "<p class=\"why\">GitHub generates those two ids, so they cannot be guessed or derived. " +
+        "Everything else is already wired.</p></div>";
+      return;
+    }
+
+    host.innerHTML = "<h2>Comments</h2>";
+    var s = document.createElement("script");
+    s.src = "https://giscus.app/client.js";
+    s.async = true;
+    s.crossOrigin = "anonymous";
+    s.setAttribute("data-repo", repo);
+    s.setAttribute("data-repo-id", GISCUS.repoId);
+    s.setAttribute("data-category", GISCUS.category);
+    s.setAttribute("data-category-id", GISCUS.categoryId);
+    s.setAttribute("data-mapping", "specific");
+    s.setAttribute("data-term", kind + "/" + slug);      /* one thread per item */
+    s.setAttribute("data-reactions-enabled", GISCUS.reactions ? "1" : "0");
+    s.setAttribute("data-emit-metadata", "0");
+    s.setAttribute("data-input-position", "top");
+    s.setAttribute("data-lang", "en");
+    s.setAttribute("data-loading", "lazy");
+    s.setAttribute("data-theme",
+      (root.getAttribute("data-theme") ||
+       (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark")) === "light"
+        ? "light" : "dark");
+    host.appendChild(s);
+  }
+
+  /* ───────────── router ───────────── */
+  function route(){
+    var hash = location.hash || "";
+    var m = hash.match(/^#(post|project)\/(.+)$/);
+
+    if (m) {
+      body.setAttribute("data-view", "doc");
+      var dv = document.getElementById("doc-view");
+      dv.classList.remove("fade"); void dv.offsetWidth; dv.classList.add("fade");
+      window.scrollTo(0, 0);
+      loadDoc(m[1], m[2]);
+    } else {
+      body.removeAttribute("data-view");
+      document.title = TITLE;
+      if (hash.length > 1) {
+        var sec = document.querySelector(hash);
+        if (sec) { sec.scrollIntoView(); return; }
+      }
+      window.scrollTo(0, 0);
+    }
+  }
+  window.addEventListener("hashchange", route);
+  document.querySelectorAll("[data-home]").forEach(function(a){
+    a.addEventListener("click", function(e){
+      e.preventDefault();
+      history.replaceState(null, "", location.pathname + location.search);
+      route();
+    });
+  });
+
+  /* ───────────── reveal on scroll ───────────── */
+  var io = null, revealArmed = false;
+
+  /* Once an element has revealed, drop the reveal classes. .rv sets a
+     transition shorthand, which replaces whatever transition the component
+     itself declared: a card carrying both ended up with no shadow or
+     background transition at all, so hover snapped instead of easing.
+     Retiring the class hands the element back its own styles. */
+  function retire(el){
+    el.classList.remove("in", "rv");
+    el.style.transitionDelay = "";
+  }
+
+  function reveal(el){
+    el.classList.add("in");
+    var wait = (parseFloat(el.style.transitionDelay) || 0) + 560;
+    setTimeout(function(){ retire(el); }, wait);
+  }
+
+  function revealAll(){
+    document.querySelectorAll(".rv").forEach(reveal);
+  }
+
+  /* Arm the effect only if we can actually deliver it. */
+  if (!reduced && "IntersectionObserver" in window) {
+    root.classList.add("reveal-on");
+    revealArmed = true;
+    /* Watchdog: some embedded and older browsers accept observers and never
+       fire them. If nothing has appeared shortly after load, show it all. */
+    window.addEventListener("load", function(){
+      setTimeout(function(){
+        if (!document.querySelector(".rv.in")) revealAll();
+      }, 1200);
+    });
+  }
+
+  function observe(nodes){
+    if (!revealArmed) {
+      nodes.forEach(function(el){ el.classList.remove("rv"); });
+      return;
+    }
+    if (!io) {
+      io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if (e.isIntersecting) { reveal(e.target); io.unobserve(e.target); }
+        });
+      }, {threshold:.1, rootMargin:"0px 0px -6% 0px"});
+    }
+    var i = 0;
+    nodes.forEach(function(el){
+      el.style.transitionDelay = (Math.min(i++, 5) * 45) + "ms";
+      io.observe(el);
+    });
+  }
+
+  /* scroll progress. transform only, so it stays off the main layout path. */
+  var bar = document.getElementById("progress");
+  var ticking = false;
+  function drawProgress(){
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.transform = "scaleX(" + (max > 0 ? Math.min(window.scrollY / max, 1) : 0) + ")";
+    ticking = false;
+  }
+  window.addEventListener("scroll", function(){
+    if (!ticking) { ticking = true; requestAnimationFrame(drawProgress); }
+  }, {passive:true});
+  drawProgress();
+
+  /* Annotation popovers. One element, repositioned, so there is no popover
+     per annotation sitting in the DOM doing nothing. */
+  (function(){
+    var pop = null, hideTimer = null;
+    function ensure(){
+      if (!pop) { pop = document.createElement("div"); pop.className = "anno-pop";
+                  pop.setAttribute("role","tooltip"); document.body.appendChild(pop); }
+      return pop;
+    }
+    function show(btn){
+      clearTimeout(hideTimer);
+      var el = ensure();
+      el.textContent = btn.dataset.note;
+      el.classList.add("on");
+      var b = btn.getBoundingClientRect();
+      /* measure first, then keep it inside the viewport on both axes */
+      var w = el.offsetWidth, h = el.offsetHeight;
+      var left = Math.min(Math.max(12, b.left), window.innerWidth - w - 12);
+      var top  = b.bottom + 10;
+      if (top + h > window.innerHeight - 12) top = Math.max(12, b.top - h - 10);
+      el.style.left = left + "px";
+      el.style.top  = top + "px";
+    }
+    function hide(){ hideTimer = setTimeout(function(){ if (pop) pop.classList.remove("on"); }, 90); }
+
+    document.addEventListener("pointerover", function(e){
+      var btn = e.target.closest && e.target.closest(".anno");
+      if (btn) show(btn);
+    });
+    document.addEventListener("pointerout", function(e){
+      if (e.target.closest && e.target.closest(".anno")) hide();
+    });
+    document.addEventListener("focusin", function(e){
+      if (e.target.classList && e.target.classList.contains("anno")) show(e.target);
+    });
+    document.addEventListener("focusout", function(e){
+      if (e.target.classList && e.target.classList.contains("anno")) hide();
+    });
+    document.addEventListener("keydown", function(e){ if (e.key === "Escape") hide(); });
+    window.addEventListener("scroll", function(){ if (pop) pop.classList.remove("on"); }, {passive:true});
+  })();
+
+  /* the page-wide glow. lerped toward the pointer on a rAF loop so it lags
+     slightly, which reads as motion rather than a sticker under the cursor */
+  if (fine && !reduced) {
+    var glow = document.getElementById("cursorGlow");
+    var gx = innerWidth / 2, gy = innerHeight / 2, tx = gx, ty = gy, running = false;
+    function step(){
+      gx += (tx - gx) * 0.12;
+      gy += (ty - gy) * 0.12;
+      glow.style.transform = "translate3d(" + gx + "px," + gy + "px,0)";
+      if (Math.abs(tx - gx) > 0.4 || Math.abs(ty - gy) > 0.4) requestAnimationFrame(step);
+      else running = false;
+    }
+    document.addEventListener("pointermove", function(e){
+      tx = e.clientX; ty = e.clientY;
+      glow.classList.add("on");
+      if (!running) { running = true; requestAnimationFrame(step); }
+    }, {passive:true});
+    document.addEventListener("pointerleave", function(){ glow.classList.remove("on"); });
+  }
+
+  /* cursor spotlight on cards, delegated so it also covers cards added later */
+  if (fine && !reduced) {
+    document.addEventListener("pointermove", function(e){
+      var card = e.target.closest && e.target.closest(".card");
+      if (!card) return;
+      var b = card.getBoundingClientRect();
+      card.style.setProperty("--cx", (e.clientX - b.left) + "px");
+      card.style.setProperty("--cy", (e.clientY - b.top) + "px");
+    }, {passive:true});
+  }
+
+  /* Tickers. The list is duplicated so the -50% loop is seamless. */
+  function fillTicker(id, words){
+    var host = document.getElementById(id);
+    if (!host || !words.length) return;
+    var run = words.map(function(w){ return "<span>" + w + "</span>"; }).join("");
+    host.innerHTML = run + run;
+  }
+
+  fillTicker("ticker", ["Kafka","AWS Lambda","Redshift","Glue","Athena","Airflow","Apache Spark",
+                        "PostgreSQL","RAG","LLMOps","OpenAI API","Agentic AI",
+                        "500M+ transactions a day","Sub-5s latency","AWS Solutions Architect"]);
+
+  /* the writing strip is built from what the posts are actually about, so it
+     stays honest as posts are added */
+  loadManifest("posts").then(function(items){
+    var tags = [];
+    listed(items).forEach(function(p){
+      (p.tags || []).forEach(function(t){ if (tags.indexOf(t) === -1) tags.push(t); });
+    });
+    fillTicker("tickerNotes", tags.concat(["Things that broke","And what fixed them"]));
+  }).catch(function(){});
+
+  /* Each of these is on the CV. Nothing here is colour. */
+  fillTicker("tickerAbout", ["AVP Data Engineer at NatWest","10+ years on data platforms",
+                             "3.5 years in Edinburgh","AWS Solutions Architect",
+                             "MSc in AI & ML","Bengaluru"]);
+
+  /* "/" jumps to the nearest search box, the way most doc sites behave */
+  document.addEventListener("keydown", function(e){
+    if (e.key !== "/" || e.metaKey || e.ctrlKey || e.altKey) return;
+    var tag = (e.target.tagName || "").toLowerCase();
+    if (tag === "input" || tag === "textarea" || e.target.isContentEditable) return;
+    if (body.getAttribute("data-view") === "doc") return;
+    var boxes = [].slice.call(document.querySelectorAll(".search input"));
+    var target = boxes.filter(function(el){
+      return el.getBoundingClientRect().top > 60;
+    })[0] || boxes[0];
+    if (target) { e.preventDefault(); target.focus(); target.select(); }
+  });
+
+  initMeshes(document);
+  initHolo(document);
+  observe(document.querySelectorAll(".rv"));
+  renderProjects();
+  renderPosts();
+  route();
+})();
+</script>
+</body>
+</html>

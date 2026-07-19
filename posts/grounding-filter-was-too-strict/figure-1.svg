@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="How a proposed gap is matched against the job description, comparing the every-token rule with the primary-token rule">
+  <style>
+    .bg{fill:#0d1117} .panel{fill:#161b22} .panel2{fill:#1c2128}
+    .ln{stroke:#30363d;fill:none} .t{fill:#e6edf3} .m{fill:#8b949e} .dim{fill:#6e7681}
+    .acc{fill:#8ab4f8} .accs{stroke:#8ab4f8;fill:none}
+    .bad{fill:#f85149} .bads{stroke:#f85149;fill:none}
+    .ok{fill:#3fb950} .oks{stroke:#3fb950;fill:none}
+    .warn{fill:#f0883e}
+    text{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+    .sans{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif}
+    @media (prefers-color-scheme: light){
+      .bg{fill:#f6f8fa} .panel{fill:#ffffff} .panel2{fill:#f0f3f6}
+      .ln{stroke:#d0d7de} .t{fill:#1f2328} .m{fill:#59636e} .dim{fill:#818b98}
+      .acc{fill:#0969da} .accs{stroke:#0969da} .bad{fill:#cf222e} .bads{stroke:#cf222e}
+      .ok{fill:#1a7f37} .oks{stroke:#1a7f37} .warn{fill:#bc4c00}
+    }
+  </style>
+  <rect class="bg" width="1200" height="675"/>
+
+  <text class="sans t" x="60" y="64" font-size="27" font-weight="600">One proposed gap, checked against one posting</text>
+  <text class="m" x="60" y="96" font-size="15">The old rule needed every token. The new rule needs the most specific one.</text>
+
+  <!-- inputs -->
+  <rect class="panel ln" x="60" y="132" width="470" height="96" rx="12" stroke-width="1"/>
+  <text class="dim" x="84" y="160" font-size="12" letter-spacing="1.6">MODEL PROPOSES</text>
+  <text class="t" x="84" y="192" font-size="19">Kubernetes orchestration</text>
+  <text class="m" x="84" y="214" font-size="13">a gap it wants to show the user</text>
+
+  <rect class="panel ln" x="670" y="132" width="470" height="96" rx="12" stroke-width="1"/>
+  <text class="dim" x="694" y="160" font-size="12" letter-spacing="1.6">JOB DESCRIPTION SAYS</text>
+  <text class="t" x="694" y="192" font-size="19">We use Kubernetes across the platform</text>
+  <text class="m" x="694" y="214" font-size="13">the only source of truth for requirements</text>
+
+  <!-- tokenise -->
+  <text class="dim" x="60" y="276" font-size="12" letter-spacing="1.6">TOKENISE, DROP STOPWORDS</text>
+  <rect class="panel2 ln" x="60" y="292" width="230" height="44" rx="9" stroke-width="1"/>
+  <text class="acc" x="80" y="320" font-size="16">kubernetes</text>
+  <text class="ok" x="228" y="320" font-size="13">kept</text>
+
+  <rect class="panel2 bads" x="308" y="292" width="248" height="44" rx="9" stroke-width="1.5" stroke-dasharray="5 5"/>
+  <text class="bad" x="328" y="320" font-size="16">orchestration</text>
+  <text class="bad" x="480" y="320" font-size="13">stopword</text>
+
+  <text class="m" x="60" y="368" font-size="13">Domain stopwords carry no signal in a posting: experience, years, required, data, engineer, orchestration.</text>
+
+  <!-- old rule -->
+  <rect class="panel2 bads" x="60" y="404" width="520" height="150" rx="12" stroke-width="1.5"/>
+  <text class="bad" x="86" y="436" font-size="17">Old rule: every token must match</text>
+  <text class="t" x="86" y="468" font-size="14">"kubernetes" in JD</text>
+  <text class="ok" x="330" y="468" font-size="14">found</text>
+  <text class="t" x="86" y="496" font-size="14">"orchestration" in JD</text>
+  <text class="bad" x="330" y="496" font-size="14">not found</text>
+  <path class="ln" d="M86 514 H 554" stroke-width="1"/>
+  <text class="bad" x="86" y="538" font-size="15">Whole gap dropped. A true answer, deleted.</text>
+
+  <!-- new rule -->
+  <rect class="panel2 oks" x="620" y="404" width="520" height="150" rx="12" stroke-width="1.5"/>
+  <text class="ok" x="646" y="436" font-size="17">New rule: the primary token must match</text>
+  <text class="t" x="646" y="468" font-size="14">longest non-stopword</text>
+  <text class="acc" x="890" y="468" font-size="14">kubernetes</text>
+  <text class="t" x="646" y="496" font-size="14">whole-word search in JD</text>
+  <text class="ok" x="890" y="496" font-size="14">found</text>
+  <path class="ln" d="M646 514 H 1114" stroke-width="1"/>
+  <text class="ok" x="646" y="538" font-size="15">Gap kept, and it is the useful one.</text>
+
+  <!-- boundary note -->
+  <rect class="panel ln" x="60" y="586" width="1080" height="62" rx="12" stroke-width="1"/>
+  <text class="warn" x="86" y="614" font-size="15">Whole word, never substring.</text>
+  <text class="t" x="330" y="614" font-size="14">"Strong JavaScript background" contains the letters java.</text>
+  <text class="m" x="86" y="636" font-size="13">Without the boundary check, a Java gap grounds against a JavaScript role and the user learns the wrong language.</text>
+
+</svg>

@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Keyed on the token, one user owns many buckets. Keyed on the validated user id, one.">
+  <style>
+    /* var() picks up the page theme when this file is inlined; the fallback
+       keeps it readable when the .svg is opened on its own. */
+    .bg{fill:var(--diagram-bg,#0d1117)} .panel{fill:var(--diagram-panel,#161b22)}
+    .panel2{fill:var(--diagram-panel2,#1c2128)}
+    .ln{stroke:var(--diagram-line,#30363d);fill:none}
+    .t{fill:var(--diagram-ink,#e6edf3)} .m{fill:var(--diagram-ink2,#8b949e)}
+    .dim{fill:var(--diagram-ink3,#6e7681)}
+    .acc{fill:var(--diagram-acc,#8ab4f8)} .accs{stroke:var(--diagram-acc,#8ab4f8);fill:none}
+    .bad{fill:var(--diagram-bad,#f85149)} .bads{stroke:var(--diagram-bad,#f85149);fill:none}
+    .ok{fill:var(--diagram-ok,#3fb950)} .oks{stroke:var(--diagram-ok,#3fb950);fill:none}
+    .warn{fill:var(--diagram-warn,#f0883e)}
+    text{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+    .sans{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif}
+    @media (prefers-color-scheme: light){
+      .bg{fill:var(--diagram-bg,#f6f8fa)} .panel{fill:var(--diagram-panel,#ffffff)}
+      .panel2{fill:var(--diagram-panel2,#f0f3f6)}
+      .ln{stroke:var(--diagram-line,#d0d7de)}
+      .t{fill:var(--diagram-ink,#1f2328)} .m{fill:var(--diagram-ink2,#59636e)}
+      .dim{fill:var(--diagram-ink3,#818b98)}
+      .acc{fill:var(--diagram-acc,#0969da)} .accs{stroke:var(--diagram-acc,#0969da)}
+      .bad{fill:var(--diagram-bad,#cf222e)} .bads{stroke:var(--diagram-bad,#cf222e)}
+      .ok{fill:var(--diagram-ok,#1a7f37)} .oks{stroke:var(--diagram-ok,#1a7f37)}
+      .warn{fill:var(--diagram-warn,#bc4c00)}
+    }
+  </style>
+  <rect class="bg" width="1200" height="675"/>
+
+  <text class="sans t" x="60" y="70" font-size="30" font-weight="600">Same user, two ways to count them</text>
+  <text class="m" x="60" y="102" font-size="16">The limiter is only as stable as the string it counts against.</text>
+
+  <!-- Left panel: keyed on token hash -->
+  <g>
+    <rect class="panel ln" x="60" y="140" width="520" height="440" rx="14" stroke-width="1"/>
+    <circle class="bad" cx="98" cy="186" r="7"/>
+    <text class="t" x="120" y="193" font-size="18">key = hash(bearer token)</text>
+
+    <rect class="panel2 ln" x="92" y="224" width="456" height="72" rx="10" stroke-width="1"/>
+    <text class="m" x="112" y="254" font-size="14">token A</text>
+    <text class="t" x="112" y="278" font-size="14">bucket a91f...  20/20 used</text>
+    <text class="bad" x="452" y="266" font-size="13">429</text>
+
+    <text class="dim" x="112" y="326" font-size="13">POST /auth/refresh</text>
+    <path class="bads" d="M300 306 v34" stroke-width="1.5"/>
+    <path class="bad" d="M300 346 l-5 -9 h10 z"/>
+
+    <rect class="panel2 ln" x="92" y="356" width="456" height="72" rx="10" stroke-width="1"/>
+    <text class="m" x="112" y="386" font-size="14">token B, same person</text>
+    <text class="t" x="112" y="410" font-size="14">bucket 4c2e...   0/20 used</text>
+    <text class="warn" x="440" y="398" font-size="13">pass</text>
+
+    <text class="dim" x="112" y="458" font-size="13">refresh again, and again...</text>
+
+    <rect class="panel2 bads" x="92" y="476" width="456" height="72" rx="10" stroke-width="1.5"/>
+    <text class="bad" x="112" y="506" font-size="14">as many clean buckets</text>
+    <text class="bad" x="112" y="530" font-size="14">as the client cares to mint</text>
+  </g>
+
+  <!-- Right panel: keyed on validated user id -->
+  <g>
+    <rect class="panel ln" x="620" y="140" width="520" height="440" rx="14" stroke-width="1"/>
+    <circle class="ok" cx="658" cy="186" r="7"/>
+    <text class="t" x="680" y="193" font-size="18">key = validated user id</text>
+
+    <rect class="panel2 oks" x="652" y="224" width="456" height="128" rx="10" stroke-width="2"/>
+    <text class="m" x="672" y="256" font-size="14">token A, token B, token C...</text>
+    <text class="t" x="672" y="284" font-size="15">bucket u:7d41  one per person</text>
+    <text class="ok" x="672" y="316" font-size="14">refresh changes nothing</text>
+
+    <text class="m" x="672" y="398" font-size="14">forged token, someone else's id?</text>
+    <text class="t" x="672" y="424" font-size="14">validation fails first — falls back</text>
+    <text class="t" x="672" y="446" font-size="14">to the sender's own IP</text>
+
+    <text class="m" x="672" y="500" font-size="14">no user yet (signup, login)?</text>
+    <text class="t" x="672" y="526" font-size="14">IP is the honest key — there is</text>
+    <text class="t" x="672" y="548" font-size="14">no user to count against</text>
+  </g>
+
+  <text class="dim" x="60" y="622" font-size="14">Not "what identifies this request" but "what would it cost the client to get a fresh one".</text>
+  <text class="acc" x="60" y="650" font-size="14">A token costs one refresh call. The validated id is the thing they cannot mint.</text>
+</svg>

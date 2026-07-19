@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="The Applyin sidebar open beside a LinkedIn job posting, showing a fit score of 72, missing skills and a suggested rewrite">
+  <style>
+    /* var() picks up the page theme when this file is inlined; the fallback
+       keeps it readable when the .svg is opened on its own. */
+    .bg{fill:var(--diagram-bg,#0d1117)} .panel{fill:var(--diagram-panel,#161b22)}
+    .panel2{fill:var(--diagram-panel2,#1c2128)}
+    .ln{stroke:var(--diagram-line,#30363d);fill:none}
+    .t{fill:var(--diagram-ink,#e6edf3)} .m{fill:var(--diagram-ink2,#8b949e)}
+    .dim{fill:var(--diagram-ink3,#6e7681)}
+    .acc{fill:var(--diagram-acc,#8ab4f8)} .accs{stroke:var(--diagram-acc,#8ab4f8);fill:none}
+    .bad{fill:var(--diagram-bad,#f85149)} .bads{stroke:var(--diagram-bad,#f85149);fill:none}
+    .ok{fill:var(--diagram-ok,#3fb950)} .oks{stroke:var(--diagram-ok,#3fb950);fill:none}
+    .warn{fill:var(--diagram-warn,#f0883e)}
+    text{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+    .sans{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif}
+    @media (prefers-color-scheme: light){
+      .bg{fill:var(--diagram-bg,#f6f8fa)} .panel{fill:var(--diagram-panel,#ffffff)}
+      .panel2{fill:var(--diagram-panel2,#f0f3f6)}
+      .ln{stroke:var(--diagram-line,#d0d7de)}
+      .t{fill:var(--diagram-ink,#1f2328)} .m{fill:var(--diagram-ink2,#59636e)}
+      .dim{fill:var(--diagram-ink3,#818b98)}
+      .acc{fill:var(--diagram-acc,#0969da)} .accs{stroke:var(--diagram-acc,#0969da)}
+      .bad{fill:var(--diagram-bad,#cf222e)} .bads{stroke:var(--diagram-bad,#cf222e)}
+      .ok{fill:var(--diagram-ok,#1a7f37)} .oks{stroke:var(--diagram-ok,#1a7f37)}
+      .warn{fill:var(--diagram-warn,#bc4c00)}
+    }
+  </style>
+  <rect class="bg" width="1200" height="675"/>
+
+  <rect class="panel ln" x="48" y="48" width="1104" height="580" rx="16" stroke-width="1"/>
+  <path class="ln" d="M48 96 H 1152" stroke-width="1"/>
+  <circle class="dim" cx="80" cy="72" r="6"/><circle class="dim" cx="102" cy="72" r="6"/><circle class="dim" cx="124" cy="72" r="6"/>
+  <rect class="panel2 ln" x="158" y="60" width="440" height="26" rx="13" stroke-width="1"/>
+  <text class="m" x="176" y="78" font-size="13">linkedin.com/jobs/view/4021…</text>
+
+  <!-- job page -->
+  <text class="sans t" x="84" y="150" font-size="25" font-weight="600">Senior Data Engineer</text>
+  <text class="m" x="84" y="180" font-size="15">Bengaluru · Hybrid · Posted 2 days ago</text>
+  <g class="ln" stroke-width="9" stroke-linecap="round" opacity="0.5">
+    <path d="M84 220 H 620"/><path d="M84 248 H 660"/><path d="M84 276 H 560"/>
+    <path d="M84 330 H 640"/><path d="M84 358 H 600"/><path d="M84 386 H 660"/>
+    <path d="M84 414 H 520"/><path d="M84 468 H 630"/><path d="M84 496 H 580"/>
+  </g>
+
+  <!-- sidebar -->
+  <rect class="panel2 accs" x="716" y="126" width="404" height="470" rx="14" stroke-width="1.5"/>
+  <text class="acc" x="744" y="160" font-size="13" letter-spacing="2">APPLYIN</text>
+
+  <!-- score dial -->
+  <circle class="ln" cx="800" cy="234" r="42" stroke-width="9"/>
+  <path class="accs" d="M800 192 a42 42 0 0 1 33 68" stroke-width="9" stroke-linecap="round"/>
+  <text class="sans t" x="800" y="240" font-size="28" font-weight="640" text-anchor="middle">72</text>
+  <text class="sans t" x="866" y="222" font-size="18" font-weight="600">Worth applying</text>
+  <text class="m" x="866" y="246" font-size="14">strong on pipelines, thin on k8s</text>
+
+  <path class="ln" d="M744 296 H 1092" stroke-width="1"/>
+
+  <text class="m" x="744" y="330" font-size="13" letter-spacing="1.5">MISSING FROM YOUR CV</text>
+  <rect class="panel bads" x="744" y="346" width="120" height="30" rx="8" stroke-width="1"/>
+  <text class="bad" x="762" y="366" font-size="14">Kubernetes</text>
+  <rect class="panel bads" x="876" y="346" width="88" height="30" rx="8" stroke-width="1"/>
+  <text class="bad" x="894" y="366" font-size="14">Airflow</text>
+  <rect class="panel bads" x="976" y="346" width="72" height="30" rx="8" stroke-width="1"/>
+  <text class="bad" x="994" y="366" font-size="14">Scala</text>
+  <text class="dim" x="744" y="396" font-size="12">every one of these appears verbatim in the posting</text>
+
+  <path class="ln" d="M744 420 H 1092" stroke-width="1"/>
+
+  <text class="m" x="744" y="452" font-size="13" letter-spacing="1.5">SUGGESTED REWRITE</text>
+  <rect class="panel ln" x="744" y="466" width="348" height="62" rx="10" stroke-width="1"/>
+  <text class="t" x="762" y="490" font-size="13">"Cut pipeline processing time 30% across</text>
+  <text class="t" x="762" y="512" font-size="13">500M+ daily events on AWS Lambda."</text>
+
+  <rect class="acc" x="744" y="546" width="168" height="36" rx="18"/>
+  <text class="bg" x="828" y="570" font-size="14" text-anchor="middle" font-weight="600">Prep interview</text>
+  <text class="dim" x="928" y="570" font-size="13">1 credit</text>
+
+</svg>

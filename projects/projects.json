@@ -1,0 +1,90 @@
+[
+  {
+    "slug": "applyin",
+    "name": "Applyin",
+    "blurb": "Scores a LinkedIn job against your real resume in a sidebar on the posting, returning fit, missing skills and a rewrite, from a grounded LLM pass over a credit ledger.",
+    "status": "Live",
+    "period": "2026",
+    "stack": [
+      "FastAPI",
+      "PostgreSQL",
+      "OpenAI",
+      "Chrome MV3",
+      "Razorpay"
+    ],
+    "repo": "",
+    "cover": "cover.svg",
+    "display": "show",
+    "header": "header.svg",
+    "art": "1784428981"
+  },
+  {
+    "slug": "sutham",
+    "name": "Sutham",
+    "blurb": "Sorts household waste from a phone camera with no network, speaking English, Hindi, Kannada, Tamil or Telugu. Built solo in 6.5 hours at the DeepMind hackathon.",
+    "status": "Hackathon build",
+    "period": "2026",
+    "stack": [
+      "Flutter",
+      "On-device",
+      "Gemini Live",
+      "Multimodal"
+    ],
+    "repo": "https://github.com/AnkitSurana/sutham-app",
+    "cover": "cover.svg",
+    "display": "show",
+    "header": "header.svg",
+    "art": "1784428981"
+  },
+  {
+    "slug": "skopelabs",
+    "name": "SkopeLabs",
+    "blurb": "Finds a reference image in video and shows the keypoints behind the decision, by pairing ORB descriptors with a RANSAC check rather than an unexplainable model.",
+    "status": "Open source",
+    "period": "2026",
+    "stack": [
+      "Python",
+      "OpenCV",
+      "ORB / RANSAC"
+    ],
+    "repo": "https://github.com/AnkitSurana/skopelabs",
+    "cover": "cover.svg",
+    "display": "show",
+    "header": "header.svg",
+    "art": "1784428981"
+  },
+  {
+    "slug": "stocker",
+    "name": "Stocker",
+    "blurb": "Puts NSE research inside Claude as quotes, screening, peer comparison and alerts, by exposing each capability as an MCP tool over free Yahoo Finance data.",
+    "status": "Open source",
+    "period": "2026",
+    "stack": [
+      "Python",
+      "MCP",
+      "Yahoo Finance"
+    ],
+    "repo": "https://github.com/AnkitSurana/stocker",
+    "cover": "cover.svg",
+    "display": "show",
+    "header": "header.svg",
+    "art": "1784428981"
+  },
+  {
+    "slug": "collabdocs",
+    "name": "CollabDocs",
+    "blurb": "Resolves workspace and document permissions in one function instead of scattered checks, so an access question has exactly one place to read. Django REST, Postgres.",
+    "status": "Open source",
+    "period": "2026",
+    "stack": [
+      "Django",
+      "DRF",
+      "PostgreSQL"
+    ],
+    "repo": "https://github.com/AnkitSurana/collabdocs",
+    "cover": "cover.svg",
+    "display": "show",
+    "header": "header.svg",
+    "art": "1784428981"
+  }
+]
