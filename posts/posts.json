@@ -1,5 +1,61 @@
 [
   {
+    "slug": "two-tools-i-left-out",
+    "title": "Two tools I left out of NoByte on purpose",
+    "summary": "A speed test and a currency converter would have been the two most visited pages on the site. Both would have lied to the person using them, so I built neither.",
+    "date": "2026-08-16",
+    "tags": [
+      "Product",
+      "Scope"
+    ],
+    "cover": "cover.svg",
+    "display": "show",
+    "header": "header.svg",
+    "art": "1786898560"
+  },
+  {
+    "slug": "lights-out-shortest-solution",
+    "title": "The Lights Out hint that was legal but never the smart move",
+    "summary": "My solver cleared the board, so I called it done. But a solved board has sixteen answers, and it kept handing back a longer one than it needed to.",
+    "date": "2026-08-15",
+    "tags": [
+      "Algorithms",
+      "Games"
+    ],
+    "cover": "cover.svg",
+    "display": "show",
+    "header": "header.svg",
+    "art": "1786898560"
+  },
+  {
+    "slug": "blank-qr-on-iphone",
+    "title": "The QR export that came back blank, but only on an iPhone",
+    "summary": "It rendered on my laptop and downloaded a blank square on a phone. The canvas was not too big for the device, it was too big for one silent limit.",
+    "date": "2026-08-15",
+    "tags": [
+      "Canvas",
+      "Safari"
+    ],
+    "cover": "cover.svg",
+    "display": "show",
+    "header": "header.svg",
+    "art": "1786898560"
+  },
+  {
+    "slug": "cache-hash-chasing-its-tail",
+    "title": "The cache-busting hash that had to chase its own tail",
+    "summary": "I stamped every file with a hash of its bytes, then shipped a change nobody saw. A file's hash does not move when something it imports does.",
+    "date": "2026-08-14",
+    "tags": [
+      "Caching",
+      "Build"
+    ],
+    "cover": "cover.svg",
+    "display": "show",
+    "header": "header.svg",
+    "art": "1786898560"
+  },
+  {
     "slug": "grounding-filter-was-too-strict",
     "title": "My anti-hallucination filter was deleting the real gaps",
     "summary": "It only kept what it could find in the job description. That was right, and it was also throwing away the answers worth reading.",
@@ -11,7 +67,7 @@
     "cover": "cover.svg",
     "display": "show",
     "header": "header.svg",
-    "art": "1784449162"
+    "art": "1786898560"
   },
   {
     "slug": "check-then-act-race",
@@ -23,9 +79,9 @@
       "Postgres"
     ],
     "cover": "cover.svg",
-    "display": "hide",
+    "display": "show",
     "header": "header.svg",
-    "art": "1784428981"
+    "art": "1786898560"
   },
   {
     "slug": "cache-key-was-wrong",
@@ -37,9 +93,9 @@
       "Billing"
     ],
     "cover": "cover.svg",
-    "display": "hide",
+    "display": "show",
     "header": "header.svg",
-    "art": "1784428981"
+    "art": "1786898560"
   },
   {
     "slug": "what-do-you-rate-limit-on",
@@ -51,8 +107,8 @@
       "Abuse"
     ],
     "cover": "cover.svg",
-    "display": "hide",
+    "display": "show",
     "header": "header.svg",
-    "art": "1784428981"
+    "art": "1786898560"
   }
 ]

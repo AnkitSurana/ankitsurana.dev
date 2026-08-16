@@ -1,5 +1,24 @@
 [
   {
+    "slug": "nobyte",
+    "name": "NoByte",
+    "blurb": "63 browser tools and 13 games that keep your data on your device, no uploads or accounts. A zero-dependency static site built from one tool registry.",
+    "status": "Live",
+    "period": "2026",
+    "stack": [
+      "Vanilla JS",
+      "Node",
+      "Static site",
+      "Zero deps",
+      "Canvas"
+    ],
+    "repo": "https://github.com/AnkitSurana/NoByte",
+    "cover": "cover.svg",
+    "display": "show",
+    "header": "header.svg",
+    "art": "1786898560"
+  },
+  {
     "slug": "applyin",
     "name": "Applyin",
     "blurb": "Scores a LinkedIn job against your real resume in a sidebar on the posting, returning fit, missing skills and a rewrite, from a grounded LLM pass over a credit ledger.",
@@ -16,7 +35,7 @@
     "cover": "cover.svg",
     "display": "show",
     "header": "header.svg",
-    "art": "1784428981"
+    "art": "1786898560"
   },
   {
     "slug": "sutham",
@@ -34,7 +53,7 @@
     "cover": "cover.svg",
     "display": "show",
     "header": "header.svg",
-    "art": "1784428981"
+    "art": "1786898560"
   },
   {
     "slug": "skopelabs",
@@ -51,7 +70,7 @@
     "cover": "cover.svg",
     "display": "show",
     "header": "header.svg",
-    "art": "1784428981"
+    "art": "1786898560"
   },
   {
     "slug": "stocker",
@@ -68,7 +87,7 @@
     "cover": "cover.svg",
     "display": "show",
     "header": "header.svg",
-    "art": "1784428981"
+    "art": "1786898560"
   },
   {
     "slug": "collabdocs",
@@ -85,6 +104,6 @@
     "cover": "cover.svg",
     "display": "show",
     "header": "header.svg",
-    "art": "1784428981"
+    "art": "1786898560"
   }
 ]
