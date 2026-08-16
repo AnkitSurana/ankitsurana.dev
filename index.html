@@ -1988,11 +1988,20 @@
   }
 
   /* Tickers. The list is duplicated so the -50% loop is seamless. */
+  /* Every ribbon animates the same -50% keyframe over its duplicated content,
+     so its on-screen pace is (content width / duration). The strips carry
+     different words, so a fixed duration scrolls each at a different speed.
+     Deriving the duration from the measured width instead pins all three to one
+     constant speed in pixels per second, whatever they happen to contain. */
+  var TICKER_PXPS = 55;
   function fillTicker(id, words){
     var host = document.getElementById(id);
     if (!host || !words.length) return;
     var run = words.map(function(w){ return "<span>" + w + "</span>"; }).join("");
     host.innerHTML = run + run;
+    /* scrollWidth spans both copies; one copy is the distance -50% travels */
+    var oneCopy = host.scrollWidth / 2;
+    if (!reduced && oneCopy) host.style.animationDuration = (oneCopy / TICKER_PXPS) + "s";
   }
 
   fillTicker("ticker", ["Kafka","AWS Lambda","Redshift","Glue","Athena","Airflow","Apache Spark",
