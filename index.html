@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ankit Surana — Data &amp; AI Engineer</title>
-<meta name="description" content="Data engineer at NatWest. Ten years of event-driven pipelines on AWS, plus the AI products and browser tools I build and ship on my own time. Notes on the things that broke along the way.">
+<meta name="description" content="AVP Data Engineer at NatWest building the infrastructure behind LLM applications: RAG, NL-to-SQL, agentic AI and LLMOps. Ten years of event-driven data platforms on AWS, talks, open-source tools and field notes.">
 <meta name="author" content="Ankit Surana">
 <link rel="canonical" href="https://ankitsurana.dev/">
 <meta name="theme-color" content="#08080a" media="(prefers-color-scheme: dark)">
@@ -12,11 +12,15 @@
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Ankit Surana — Data &amp; AI Engineer">
-<meta property="og:description" content="Ten years of event-driven pipelines on AWS, plus the AI products and browser tools I build and ship on my own time.">
+<meta property="og:description" content="RAG, NL-to-SQL, agentic AI and LLMOps at NatWest, plus the talks, tools and field notes I ship on my own time.">
+<meta property="og:image" content="https://ankitsurana.dev/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:url" content="https://ankitsurana.dev/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Ankit Surana — Data &amp; AI Engineer">
-<meta name="twitter:description" content="Ten years of event-driven pipelines on AWS, plus the AI products and browser tools I build and ship on my own time.">
+<meta name="twitter:description" content="RAG, NL-to-SQL, agentic AI and LLMOps at NatWest, plus the talks, tools and field notes I ship on my own time.">
+<meta name="twitter:image" content="https://ankitsurana.dev/assets/og.png">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2308080a'/%3E%3Ctext x='50' y='68' font-family='ui-monospace,monospace' font-size='46' font-weight='600' fill='%23f4f4f6' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
 
@@ -800,6 +804,33 @@
     .lead{padding-left:0;}
     .prose{font-size:17px;}
   }
+
+  /* ── hero proof row ─────────────────────────────── */
+  .proof{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin:40px 0 0;padding:0;list-style:none;
+         border-top:1px solid var(--line);}
+  .proof li{padding:18px 18px 0 0;}
+  .proof li + li{padding-left:18px;border-left:1px solid var(--line);}
+  .proof b{display:block;font-size:clamp(22px,2.6vw,28px);letter-spacing:-.03em;font-weight:640;line-height:1.1;}
+  .proof span{display:block;font-size:12.5px;color:var(--ink-3);margin-top:6px;line-height:1.4;}
+  @media (max-width:620px){
+    .proof{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:18px;}
+    .proof li:nth-child(3){padding-left:0;border-left:0;}
+  }
+
+  /* ── talks ─────────────────────────────────────── */
+  .talks{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));}
+  .talk{background:var(--surface);border-radius:18px;box-shadow:var(--shadow-1),inset 0 0 0 1px var(--ring);
+        padding:28px 28px 24px;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden;
+        transition:transform .5s var(--ease),box-shadow .5s var(--ease);}
+  .talk:hover{transform:translateY(-3px);box-shadow:var(--shadow-2),inset 0 0 0 1px var(--ring);}
+  .talk .when{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);
+              display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:0;}
+  .talk .when .tag{color:var(--kw);}
+  .talk h3{font-size:clamp(21px,2.4vw,25px);line-height:1.18;letter-spacing:-.03em;font-weight:640;margin:0;text-wrap:balance;}
+  .talk p{margin:0;color:var(--ink-2);font-size:15.5px;line-height:1.6;}
+  .talk .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;padding-top:6px;}
+  .talk::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+                background:linear-gradient(90deg,var(--kw),transparent 70%);opacity:.7;}
 </style>
 </head>
 <body>
@@ -816,7 +847,7 @@
       <span class="brand-name">Ankit Kumar Surana</span>
     </a>
     <div class="mid">
-      <a href="#work">Work</a><a href="#writing">Writing</a><a href="#about">About</a><a href="#skills">Skills</a>
+      <a href="#talks">Talks</a><a href="#work">Work</a><a href="#writing">Writing</a><a href="#about">About</a><a href="#skills">Skills</a>
     </div>
     <div class="end">
       <a class="navlink" href="#contact">Get in touch</a>
@@ -833,15 +864,21 @@
       <div class="grid">
         <div>
           <p class="eyebrow fade">Ankit Surana · AVP Data Engineer at NatWest</p>
-          <h1 class="fade">I build the pipes the numbers arrive through.</h1>
-          <p class="sub fade">Ten years of event-driven data platforms on AWS, now building agentic AI and
-            retrieval systems on top of them. I care about the whole path, from the data model up to
-            the button someone clicks.</p>
+          <h1 class="fade">I make LLM answers you can check.</h1>
+          <p class="sub fade">RAG, NL-to-SQL and agentic AI on top of ten years of event-driven data
+            platforms. I care about the whole path, from the data model up to the number someone
+            acts on.</p>
           <div class="cta fade">
             <a class="pill solid" href="#work">View work</a>
             <a class="pill" href="https://github.com/AnkitSurana" target="_blank" rel="noopener">GitHub ↗</a>
             <a class="pill" href="https://www.linkedin.com/in/ankitsurana002/" target="_blank" rel="noopener">LinkedIn ↗</a>
           </div>
+          <ul class="proof fade" aria-label="At a glance">
+            <li><b>500M+</b><span>transactions a day on the platform I work on</span></li>
+            <li><b>&lt;5s</b><span>to answer a customer's question about their spending</span></li>
+            <li><b>10+ yrs</b><span>building data platforms, 3.5 of them in Edinburgh</span></li>
+            <li><b>2 talks</b><span>on retrieval and agents for upGrad in 2026</span></li>
+          </ul>
         </div>
         <div class="portrait-wrap fade">
           <div class="portrait holo" data-holo>
@@ -850,7 +887,7 @@
             <span class="layer glare"></span><span class="layer edge"></span>
           </div>
           <div class="pmeta">
-            <span class="live"><span class="dot"></span>Open to roles</span>
+            <span class="live"><span class="dot"></span>Open to conversations</span>
             <span>Bengaluru</span>
           </div>
         </div>
@@ -858,10 +895,46 @@
     </div>
   </header>
 
-  <!-- 01 WORK -->
+  <!-- 01 TALKS -->
+  <section class="band" id="talks">
+    <div class="wrap">
+      <div class="shead rv"><span class="snum">01</span><h2>Talks</h2></div>
+      <p class="lead rv">What I have been explaining on stage this year. Each talk ships with code you
+        can run on a laptop.</p>
+      <div class="talks">
+        <article class="talk rv">
+          <p class="when"><span class="tag">Conference talk</span><span>September 2026</span><span>Bengaluru</span></p>
+          <h3>Retrieval as a Guardrail: deterministic answers from natural language</h3>
+          <p>NL-to-SQL assistants fail quietly: the query runs, the number is wrong. This talk puts
+            retrieval before SQL generation and routes every question down one of five paths, so the
+            assistant answers from a template, fills one slot, asks, explains, or refuses, instead of
+            guessing.</p>
+          <p class="when"><span>upGrad AI Marathon Bengaluru</span></p>
+          <div class="links">
+            <a class="pill solid" href="#project/retrieval-as-a-guardrail">Read the write-up</a>
+            <a class="pill" href="https://github.com/AnkitSurana/blr-ai-marathon" target="_blank" rel="noopener">Code ↗</a>
+          </div>
+        </article>
+        <article class="talk rv">
+          <p class="when"><span class="tag">Masterclass</span><span>October 2026</span><span>Online</span></p>
+          <h3>Build Your First AI Agent: from ML and LLMs to real-world workflows</h3>
+          <p>Build a tool-using support agent, then put it on a budget: the big model labels data once,
+            a small classifier learns from it, and each message stops at the cheapest helper that can
+            answer. 1.9&times; cheaper and 1.6&times; faster on the test set.</p>
+          <p class="when"><span>upGrad AI masterclass</span></p>
+          <div class="links">
+            <a class="pill solid" href="#project/agent-on-a-budget">Read the write-up</a>
+            <a class="pill" href="https://github.com/AnkitSurana/agent-on-a-budget" target="_blank" rel="noopener">Code ↗</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 WORK -->
   <section class="band alt" id="work">
     <div class="wrap">
-      <div class="shead rv"><span class="snum">01</span><h2>Work</h2></div>
+      <div class="shead rv"><span class="snum">02</span><h2>Work</h2></div>
       <p class="lead rv">Each one has a write-up, so it stands on its own whether or not the source is
         public. Open repos link out as well.</p>
       <div class="toolbar rv" id="projectTools">
@@ -880,10 +953,10 @@
     <div class="track" id="ticker"></div>
   </div>
 
-  <!-- 02 WRITING -->
+  <!-- 03 WRITING -->
   <section class="band" id="writing">
     <div class="wrap">
-      <div class="shead rv"><span class="snum">02</span><h2>Field notes</h2></div>
+      <div class="shead rv"><span class="snum">03</span><h2>Field notes</h2></div>
       <p class="lead rv">One real problem per post. What broke, why I did not see it coming, and what
         fixed it.</p>
       <div class="toolbar rv" id="postTools">
@@ -902,10 +975,10 @@
     <div class="track" id="tickerNotes"></div>
   </div>
 
-  <!-- 03 ABOUT -->
+  <!-- 04 ABOUT -->
   <section class="band alt" id="about">
     <div class="wrap">
-      <div class="shead rv"><span class="snum">03</span><h2>About</h2></div>
+      <div class="shead rv"><span class="snum">04</span><h2>About</h2></div>
       <p class="statement rv">Ten years of making sure the numbers turn up on time.</p>
       <div class="about-grid">
         <div class="bio rv">
@@ -920,9 +993,11 @@
 
           <p>Lately that has meant agents. I was on the team that shipped a personalised spending
             assistant to customers, one of the first agentic AI features any bank put in front of the
-            public, alongside a retrieval pipeline that reads the documents nobody wants to read. I
-            hold an AWS Solutions Architect certificate and an MSc in AI and Machine Learning from
-            Liverpool John Moores.</p>
+            public, alongside a retrieval pipeline that reads the documents nobody wants to read. Today
+            my work is the infrastructure underneath LLM applications: RAG pipelines, NL-to-SQL
+            engines, agents and the LLMOps that keeps them honest. I hold an MSc in AI and Machine
+            Learning from Liverpool John Moores and an AWS Solutions Architect certificate, and this
+            year I started speaking about it, for upGrad in Bengaluru and online.</p>
 
           <p>What I keep returning to is ownership. I would rather understand a system from the data
             model up to the button someone clicks than hold one slice of it very well. That is why I
@@ -935,12 +1010,12 @@
           <div class="panel" data-holo data-tilt="9">
             <p class="h"><span class="dot"></span>Now</p>
             <dl class="nowlist">
-              <dt>Leading</dt><dd>An upgrade to a real-time data platform, and the analytics layer sitting on top of it</dd>
-              <dt>Shipped</dt><dd>A customer-facing agentic assistant for spending questions, now live in beta</dd>
-              <dt>Reading</dt><dd>Agent evaluation, and what a useful benchmark for these systems even looks like</dd>
-              <dt>On the side</dt><dd>NoByte, browser tools and games that run with no server or account, live at nobyte.in and open on GitHub</dd>
+              <dt>Building</dt><dd>NL-to-SQL and semantic-layer tooling that lets people ask analytics questions in plain English</dd>
+              <dt>Speaking</dt><dd>Retrieval as a guardrail, and agents on a budget. Two upGrad sessions this autumn, code on GitHub</dd>
+              <dt>Learning</dt><dd>Azure, coming from a decade on AWS</dd>
+              <dt>On the side</dt><dd>NoByte, Stocker and TensorBox, all open source</dd>
             </dl>
-            <p class="when">Updated August 2026</p>
+            <p class="when">Updated November 2026</p>
           </div>
         </aside>
       </div>
@@ -972,10 +1047,12 @@
       <div class="record rv">
         <p class="record-h">On the record</p>
         <div class="record-grid">
+          <div class="rcard" data-holo data-tilt="10"><span class="t">Data Hero Award, NatWest<small>Recognised for data engineering work</small></span><span class="yr">2025</span></div>
           <div class="rcard" data-holo data-tilt="10"><span class="t">Risk Hero Award, NatWest<small>Automating code management</small></span><span class="yr">2024</span></div>
-          <div class="rcard" data-holo data-tilt="10"><span class="t">AWS Solutions Architect<small>Associate, and Cloud Practitioner</small></span><span class="yr">Current</span></div>
-          <div class="rcard" data-holo data-tilt="10"><span class="t">MSc, AI &amp; Machine Learning<small>Liverpool John Moores</small></span><span class="yr">Jul 2026</span></div>
-          <div class="rcard" data-holo data-tilt="10"><span class="t">Executive PG, AI &amp; ML<small>IIIT Bangalore</small></span><span class="yr">2025</span></div>
+          <div class="rcard" data-holo data-tilt="10"><span class="t">Speaker, upGrad<small>AI Marathon Bengaluru, and an online AI masterclass</small></span><span class="yr">2026</span></div>
+          <div class="rcard" data-holo data-tilt="10"><span class="t">AWS Solutions Architect<small>Associate, and Cloud Practitioner</small></span><span class="yr">2024</span></div>
+          <div class="rcard" data-holo data-tilt="10"><span class="t">MSc, AI &amp; Machine Learning<small>Liverpool John Moores. Thesis on clustering chatbot conversations for golden datasets and drift monitoring</small></span><span class="yr">Jul 2026</span></div>
+          <div class="rcard" data-holo data-tilt="10"><span class="t">Executive PG, ML &amp; AI<small>IIIT Bangalore. Academic Star of the cohort</small></span><span class="yr">Aug 2026</span></div>
           <div class="rcard" data-holo data-tilt="10"><span class="t">Google DeepMind Hackathon<small>Selected, 1 of 250 from 4,000+ applicants</small></span><span class="yr">2026</span></div>
           <div class="rcard" data-holo data-tilt="10"><span class="t">Winner, LJMU group project<small>Cash In Loop. Concept to working POC in three days</small></span><span class="yr">2025</span></div>
         </div>
@@ -987,16 +1064,16 @@
     <div class="track" id="tickerAbout"></div>
   </div>
 
-  <!-- 04 SKILLS -->
+  <!-- 05 SKILLS -->
   <section class="band" id="skills">
     <div class="wrap">
-      <div class="shead rv"><span class="snum">04</span><h2>Skills</h2></div>
+      <div class="shead rv"><span class="snum">05</span><h2>Skills</h2></div>
       <p class="lead rv">The tools I reach for without thinking about it.</p>
       <div class="skillgrid">
         <div class="scard rv" data-holo data-tilt="10"><p class="h">Languages</p><div class="items"><span>Python</span><span>SQL</span><span>JavaScript</span><span>Dart</span></div></div>
         <div class="scard rv" data-holo data-tilt="10"><p class="h">Streaming &amp; big data</p><div class="items"><span>Kafka</span><span>Apache Spark</span><span>Airflow</span><span>Hadoop</span><span>Hive</span><span>Elasticsearch</span></div></div>
-        <div class="scard rv" data-holo data-tilt="10"><p class="h">AWS</p><div class="items"><span>Lambda</span><span>Glue</span><span>Redshift</span><span>Athena</span><span>Kinesis</span><span>S3</span><span>EMR</span><span>SageMaker</span><span>ECS</span></div></div>
-        <div class="scard rv" data-holo data-tilt="10"><p class="h">GenAI &amp; agents</p><div class="items"><span>RAG</span><span>LangChain</span><span>LangGraph</span><span>Agentic systems</span><span>MCP</span><span>Langfuse</span><span>LLMOps</span><span>OpenAI API</span><span>Gemini</span></div></div>
+        <div class="scard rv" data-holo data-tilt="10"><p class="h">Cloud</p><div class="items"><span>AWS Lambda</span><span>Glue</span><span>Redshift</span><span>Athena</span><span>Kinesis</span><span>S3</span><span>EMR</span><span>SageMaker</span><span>ECS</span><span>Azure AI</span></div></div>
+        <div class="scard rv" data-holo data-tilt="10"><p class="h">GenAI &amp; agents</p><div class="items"><span>RAG</span><span>NL-to-SQL</span><span>LangChain</span><span>LangGraph</span><span>Agentic systems</span><span>MCP</span><span>Langfuse</span><span>LLMOps</span><span>OpenAI API</span><span>Gemini</span></div></div>
         <div class="scard rv" data-holo data-tilt="10"><p class="h">Machine learning</p><div class="items"><span>scikit-learn</span><span>TensorFlow</span><span>PySpark</span><span>Anomaly detection</span><span>Forecasting</span><span>OpenCV</span></div></div>
         <div class="scard rv" data-holo data-tilt="10"><p class="h">Data</p><div class="items"><span>Data modelling</span><span>Warehousing</span><span>ETL</span><span>PostgreSQL</span><span>MongoDB</span><span>Redis</span></div></div>
         <div class="scard rv" data-holo data-tilt="10"><p class="h">Platform</p><div class="items"><span>Docker</span><span>Kubernetes</span><span>Terraform</span><span>GitLab CI</span><span>Jenkins</span></div></div>
@@ -1009,8 +1086,8 @@
     <div class="aurora" aria-hidden="true"><b></b><b></b><b></b></div>
     <div class="wrap inner">
       <h2 class="rv">Let us talk about the hard part.</h2>
-      <p class="rv">If you are hiring for something where owning the whole system is the job, or you
-        just want to argue with a post, I read everything.</p>
+      <p class="rv">If you are working on retrieval, agents or the data underneath them, want a talk,
+        or just want to argue with a post, I read everything.</p>
       <div class="btns rv">
         <button class="pill solid" type="button" data-email data-subject="Hello">Email me</button>
         <a class="pill" href="https://www.linkedin.com/in/ankitsurana002/" target="_blank" rel="noopener">LinkedIn ↗</a>
@@ -1023,8 +1100,8 @@
   <footer class="foot">
     <div class="row">
       <div>
-        <p class="big">Open to senior engineering roles.</p>
-        <p class="sm">Data, ML, or forward-deployed. Bengaluru or remote.</p>
+        <p class="big">Always open to interesting conversations.</p>
+        <p class="sm">Data, retrieval, agents. Bengaluru, or wherever the call is.</p>
       </div>
       <p class="colophon">Built by hand. No framework, no build step.<br>
         Posts and write-ups are markdown in the repo.</p>

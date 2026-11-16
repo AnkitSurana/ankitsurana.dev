@@ -1,8 +1,46 @@
 [
   {
+    "slug": "retrieval-as-a-guardrail",
+    "name": "Retrieval as a Guardrail",
+    "blurb": "NL-to-SQL that retrieves before it generates, then routes each question five ways so the assistant answers, asks or refuses instead of being silently wrong.",
+    "status": "Talk",
+    "period": "2026",
+    "stack": [
+      "Python",
+      "RAG",
+      "NL-to-SQL",
+      "SQLite",
+      "LLM routing"
+    ],
+    "repo": "https://github.com/AnkitSurana/blr-ai-marathon",
+    "cover": "cover.svg",
+    "display": "show",
+    "header": "header.svg",
+    "art": "1794795925"
+  },
+  {
+    "slug": "agent-on-a-budget",
+    "name": "Agent on a Budget",
+    "blurb": "A support agent where a small classifier and a local LLM take the easy messages and the frontier model the hard ones. 1.9x cheaper, 1.6x faster.",
+    "status": "Workshop",
+    "period": "2026",
+    "stack": [
+      "Python",
+      "scikit-learn",
+      "Ollama",
+      "Tool calling",
+      "Streamlit"
+    ],
+    "repo": "https://github.com/AnkitSurana/agent-on-a-budget",
+    "cover": "cover.svg",
+    "display": "show",
+    "header": "header.svg",
+    "art": "1794795925"
+  },
+  {
     "slug": "nobyte",
     "name": "NoByte",
-    "blurb": "63 browser tools and 13 games that keep your data on your device, no uploads or accounts. A zero-dependency static site built from one tool registry.",
+    "blurb": "60+ browser tools and 13 games that keep your data on your device, no uploads or accounts. A zero-dependency static site built from one tool registry.",
     "status": "Live",
     "period": "2026",
     "stack": [
@@ -38,6 +76,42 @@
     "art": "1786898560"
   },
   {
+    "slug": "stocker",
+    "name": "Stocker",
+    "blurb": "Puts NSE research inside Claude as quotes, screening, peer comparison and alerts, by exposing each capability as an MCP tool over free Yahoo Finance data.",
+    "status": "Open source",
+    "period": "2026",
+    "stack": [
+      "Python",
+      "MCP",
+      "Yahoo Finance"
+    ],
+    "repo": "https://github.com/AnkitSurana/stocker",
+    "cover": "cover.svg",
+    "display": "show",
+    "header": "header.svg",
+    "art": "1786898560"
+  },
+  {
+    "slug": "tensorbox",
+    "name": "TensorBox",
+    "blurb": "A zero-setup ML, MLOps and LLM engineering workstation in one Docker image, with ten learning journeys and ten production-style projects.",
+    "status": "Open source",
+    "period": "2026",
+    "stack": [
+      "Docker",
+      "JupyterLab",
+      "FastAPI",
+      "PyTorch",
+      "scikit-learn"
+    ],
+    "repo": "https://github.com/AnkitSurana/tensorbox",
+    "cover": "cover.svg",
+    "display": "show",
+    "header": "header.svg",
+    "art": "1794795925"
+  },
+  {
     "slug": "sutham",
     "name": "Sutham",
     "blurb": "Sorts household waste from a phone camera with no network, speaking English, Hindi, Kannada, Tamil or Telugu. Built solo in 6.5 hours at the DeepMind hackathon.",
@@ -49,7 +123,7 @@
       "Gemini Live",
       "Multimodal"
     ],
-    "repo": "https://github.com/AnkitSurana/sutham-app",
+    "repo": "",
     "cover": "cover.svg",
     "display": "show",
     "header": "header.svg",
@@ -66,24 +140,7 @@
       "OpenCV",
       "ORB / RANSAC"
     ],
-    "repo": "https://github.com/AnkitSurana/skopelabs",
-    "cover": "cover.svg",
-    "display": "show",
-    "header": "header.svg",
-    "art": "1786898560"
-  },
-  {
-    "slug": "stocker",
-    "name": "Stocker",
-    "blurb": "Puts NSE research inside Claude as quotes, screening, peer comparison and alerts, by exposing each capability as an MCP tool over free Yahoo Finance data.",
-    "status": "Open source",
-    "period": "2026",
-    "stack": [
-      "Python",
-      "MCP",
-      "Yahoo Finance"
-    ],
-    "repo": "https://github.com/AnkitSurana/stocker",
+    "repo": "",
     "cover": "cover.svg",
     "display": "show",
     "header": "header.svg",
